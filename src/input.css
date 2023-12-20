@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    color: white;
+    @apply font-serif;
+  }
+}
+
+.hamMenu {
+  display: flex;
+  width: 33px;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+  background-color: #057aff;
+  border-radius: 50%;
+}
+
+.inactive {
+  display: none;
+}

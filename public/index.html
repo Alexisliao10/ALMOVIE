@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALMOVIE</title>
+    <script
+      src="https://kit.fontawesome.com/e8d0a79e93.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/app.css" />
+  </head>
+  <body class="bg-primary-color-b">
+    <header
+      class="bg-secondary-color-b flex h-[85px] items-center justify-between overflow-hidden py-1 pl-2 pr-5"
+    >
+      <a href="#"
+        ><img width="110" src="./assets/ALMOVIE-logo.png" alt="ALMOVIE logo"
+      /></a>
+      <nav>
+        <div class="hamMenu">
+          <i class="fa-solid fa-bars fa-lg text-white"></i>
+        </div>
+        <i class="fa-solid fa-xmark inactive"></i>
+        <ul class="inactive">
+          <li>Home</li>
+          <li>Series</li>
+          <li>Movies</li>
+          <li>New Release</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="px-5">
+      <div
+        class="bg-softBlue mt-4 flex h-[31px] w-full items-center justify-between rounded-lg bg-red-500"
+      >
+        <input
+          class="bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
+          type="text"
+          placeholder="Search Movies"
+        />
+        <i
+          class="fa-solid fa-magnifying-glass mx-3 text-white hover:cursor-pointer"
+        ></i>
+      </div>
+      <section>
+        <h1 class="my-4 text-base font-black">Recent Movies</h1>
+        <article>
+          <figure>
+            <img src="" alt="" />
+            <figcaption>Movie Title</figcaption>
+          </figure>
+        </article>
+      </section>
+      <aside class="inactive">
+        <h2>Genres</h2>
+        <ul>
+          <li>Action</li>
+          <li>Animation</li>
+          <li>Anime</li>
+          <li>Adventure</li>
+          <li>Drama</li>
+          <li>Science-fiction</li>
+          <li>Comedy</li>
+        </ul>
+      </aside>
+    </main>
+    <script defer type="module" src="../src/main.js"></script>
+  </body>
+</html>
