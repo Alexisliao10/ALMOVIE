@@ -8,6 +8,7 @@
       src="https://kit.fontawesome.com/e8d0a79e93.js"
       crossorigin="anonymous"
     ></script>
+    <script defer type="module" src="../src/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +19,7 @@
   </head>
   <body class="bg-primary-color-b">
     <header
-      class="bg-secondary-color-b flex h-[85px] items-center justify-between overflow-hidden py-1 pl-2 pr-5"
+      class="flex h-[85px] items-center justify-between overflow-hidden bg-secondary-color-b py-1 pl-2 pr-5"
     >
       <a href="#"
         ><img width="110" src="./assets/ALMOVIE-logo.png" alt="ALMOVIE logo"
@@ -38,7 +39,7 @@
     </header>
     <main class="px-5">
       <div
-        class="bg-softBlue mt-4 flex h-[31px] w-full items-center justify-between rounded-lg bg-red-500"
+        class="mt-4 flex h-[31px] w-full items-center justify-between rounded-lg bg-red-500 bg-softBlue"
       >
         <input
           class="bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
@@ -51,23 +52,17 @@
       </div>
       <section>
         <h1 class="my-4 text-base font-black">Trending Movies</h1>
-        <article class="grid grid-cols-2 gap-4">
-          <figure>
-            <img
-              class="rounded-lg"
-              src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
-              alt=""
-            />
-            <figcaption class="w-full text-center">Movie Title</figcaption>
-          </figure>
-          <figure>
-            <img
-              class="rounded-lg"
-              src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
-              alt=""
-            />
-            <figcaption class="w-full text-center">Movie Title</figcaption>
-          </figure>
+        <article id="trendMovies" class="grid grid-cols-2 gap-4">
+          <!-- <figure>
+            <a href="#" class="cursor-auto">
+              <img
+                class="rounded-lg active:border-2 active:border-sky-500"
+                src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
+                alt=""
+              />
+              <figcaption class="w-full text-center">Movie Title</figcaption>
+            </a>
+          </figure> -->
         </article>
       </section>
       <aside class="inactive">
@@ -83,6 +78,5 @@
         </ul>
       </aside>
     </main>
-    <script defer type="module" src="../src/main.js"></script>
   </body>
 </html>
