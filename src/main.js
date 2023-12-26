@@ -1,16 +1,23 @@
+import axios, { isCancel, AxiosError } from "axios";
 import API_KEY from "./apiKey.js";
 
-const API_URL = "https://api.themoviedb.org/3/";
+const api = axios.create({
+  baseURL: "https://api.themoviedb.org/3/",
+  headers: {
+    "Content-Type": "application/json;charset=utf-8",
+  },
+  params: {
+    api_key: API_KEY,
+    language: "en-US",
+  },
+});
 
 async function getTrendingMoviesPreview() {
-  const res = await fetch(
-    `${API_URL}trending/movie/day?language=en-US&api_key=${API_KEY}`,
-  );
-  const data = await res.json();
+  const { data } = await api("trending/movie/day");
   const trendMovies = data.results;
-  console.log(data);
+  console.log(trendMovies);
 
-  trendMovies.forEach((movie) => {
+  trendMovies.slice(0, 10).forEach((movie) => {
     const trendMoviesContainer = document.querySelector("#trendMovies");
 
     const movieCard = document.createElement("figure");
