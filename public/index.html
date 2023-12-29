@@ -34,30 +34,35 @@
       <nav>
         <div class="hamMenu">
           <i class="fa-solid fa-bars fa-lg text-white"></i>
+          <i class="fa-solid fa-xmark fa-lg hidden"></i>
         </div>
-        <i class="fa-solid fa-xmark inactive"></i>
-        <ul class="inactive">
-          <li>Home</li>
-          <li>Series</li>
-          <li>Movies</li>
-          <li>New Release</li>
-        </ul>
       </nav>
     </header>
     <main class="px-5">
-      <div
-        class="mt-4 flex h-[31px] w-full items-center justify-between rounded-lg bg-red-500 bg-softBlue"
-      >
-        <input
-          class="bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
-          type="text"
-          placeholder="Search Movies"
-        />
-        <i
-          class="fa-solid fa-magnifying-glass mx-3 text-white hover:cursor-pointer"
-        ></i>
+      <div class="relative h-12 overflow-y-clip transition-all">
+        <ul
+          duration-1000
+          class="absolute mx-[-1.25rem] mb-4 grid w-screen -translate-y-full grid-cols-1 gap-3 bg-secondary-color-b px-5 py-3 transition-all"
+        >
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Series</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">New Release</a></li>
+        </ul>
+        <div
+          class="relative top-3 flex h-[31px] w-full items-center justify-between rounded-lg bg-softBlue transition-all"
+        >
+          <input
+            class="bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
+            type="text"
+            placeholder="Search Movies"
+          />
+          <i
+            class="fa-solid fa-magnifying-glass mx-3 text-white hover:cursor-pointer"
+          ></i>
+        </div>
       </div>
-      <section>
+      <section class="content mt-10 transition-opacity">
         <h1 class="my-4 text-base font-black">Trending Movies</h1>
         <article id="trendMovies" class="grid grid-cols-2 gap-4">
           <!-- <figure>
@@ -72,7 +77,7 @@
           </figure> -->
         </article>
       </section>
-      <aside class="inactive">
+      <aside class="hidden">
         <h2>Genres</h2>
         <ul>
           <li>Action</li>

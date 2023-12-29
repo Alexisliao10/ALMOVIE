@@ -4,7 +4,7 @@
   "description": "A movie app for search new, recents, popular movies",
   "main": "index.js",
   "scripts": {
-    "tail:watch": "npx tailwindcss -i ./src/input.css -o ./public/assets/app.css --watch"
+    "tail:watch": "npx tailwindcss -i ./src/input.css -o ./public/assets/app.css --watch --minify"
   },
   "keywords": [
     "Javascript"
