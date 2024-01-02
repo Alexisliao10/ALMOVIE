@@ -1,4 +1,4 @@
-import { getTrendingMoviesPreview } from "./main.js";
+import { renderTrendMovies } from "./main.js";
 
 const hashPages = {
   "#trends": trendsPage,
@@ -19,8 +19,12 @@ function navigator() {
   }
 }
 
+function changeHashLocation(hash) {
+  location.hash = "#" + hash;
+}
+
 function homePage() {
-  getTrendingMoviesPreview();
+  renderTrendMovies();
 }
 
 function trendsPage() {
