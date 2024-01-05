@@ -1,14 +1,8 @@
-import { api } from "./main.js";
-
-const trendMovies = [];
-export async function getTrendMovies(range = "day") {
-  const { data } = await api(`trending/movie/${range}`);
-  trendMovies = data.results;
-}
+import { getTrendMovies, getGenreList } from "./main.js";
 export async function renderTrendMovies(range) {
   try {
     const trendMovies = await getTrendMovies(range);
-    trendMovies.slice(0, 10).forEach((movie) => {
+    trendMovies.forEach((movie) => {
       const trendMoviesContainer = document.querySelector("#trendMovies");
 
       const movieCard = document.createElement("figure");
@@ -33,5 +27,24 @@ export async function renderTrendMovies(range) {
   }
 }
 
-getTrendMovies();
-console.log(trendMovies);
+async function findNameOfId(id) {
+  try {
+    const genreList = await getGenreList();
+    const genre = genreList.find((genre) => genre.id === id);
+
+    if (genre) {
+      return genre.name;
+    } else {
+      console.log("no genre found");
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getInfoMovies(range) {
+  const data = await getTrendMovies(range);
+  console.log(data[0].genre_ids[0]);
+  const name = await findNameOfId(data[0].genre_ids[0]);
+  console.log(name);
+}

@@ -1,12 +1,14 @@
-import { renderTrendMovies } from "./main.js";
+import { renderTrendMovies, getInfoMovies } from "./trendMovies.js";
+import * as node from "./nodes.js";
 
 const hashPages = {
   "#trends": trendsPage,
   "#search=": searchPage,
   "#series": seriesPage,
   "#movies": moviesPage,
-  "#new-release": newReleasePage,
+  "#newRelease": newReleasePage,
   "#movie=": moviePreviewPage,
+  "#error404": error404,
 };
 
 function navigator() {
@@ -19,12 +21,13 @@ function navigator() {
   }
 }
 
-function changeHashLocation(hash) {
-  location.hash = "#" + hash;
-}
+// function changeHashLocation(hash) {
+//   location.hash = "#" + hash;
+// }
 
 function homePage() {
   renderTrendMovies();
+  getInfoMovies();
 }
 
 function trendsPage() {
@@ -49,6 +52,10 @@ function newReleasePage() {
 
 function moviePreviewPage() {
   console.log("movie preview");
+}
+
+function error404() {
+  console.log("error");
 }
 
 export default navigator;

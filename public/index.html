@@ -45,15 +45,16 @@
           duration-1000
           class="absolute mx-[-1.25rem] mb-4 grid w-screen -translate-y-full grid-cols-1 gap-3 bg-secondary-color-b px-5 py-3 transition-all"
         >
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Series</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">New Release</a></li>
+          <li><a href="./">Home</a></li>
+          <li><a href="#series">Series</a></li>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#newRelease">New Release</a></li>
         </ul>
         <div
           class="relative top-3 flex h-[31px] w-full items-center justify-between rounded-lg bg-softBlue transition-all"
         >
           <input
+            id="searchBar"
             class="bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
             type="text"
             placeholder="Search"
@@ -66,16 +67,28 @@
       <section class="content mt-10 transition-opacity">
         <h1 class="my-4 text-base font-black">Trending Movies</h1>
         <article id="trendMovies" class="grid grid-cols-2 gap-4">
-          <!-- <figure>
+          <!-- TODO -->
+          <figure class="relative">
+            <p
+              class="line-clamp-8 absolute mt-2 max-h-36 text-ellipsis px-2 text-start text-xs"
+            >
+              Las vacaciones de una familia dan un giro escalofriante cuando dos
+              desconocidos se presentan en plena noche buscando refugio frente a
+              un ciberataque que se va volviendo más y más aterrador. En esta
+              situación, todos deberán asumir su papel en un mundo que se
+              desmorona.
+            </p>
+            <p class="absolute top-5">Genre</p>
             <a href="#" class="cursor-auto">
               <img
-                class="rounded-lg active:border-2 active:border-sky-500"
+                class="rounded-lg opacity-20 active:border-2 active:border-sky-500"
                 src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
                 alt=""
               />
               <figcaption class="w-full text-center">Movie Title</figcaption>
             </a>
-          </figure> -->
+          </figure>
+          <!-- End TODO -->
         </article>
       </section>
       <aside class="hidden">

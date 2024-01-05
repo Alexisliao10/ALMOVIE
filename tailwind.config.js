@@ -15,6 +15,9 @@ module.exports = {
         "primary-color-t": "#FFFFFF",
         "secondary-color-t": "#F9F9F9",
       },
+      lineClamp: {
+        8: "8",
+      },
     },
   },
   plugins: [],

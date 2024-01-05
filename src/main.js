@@ -2,7 +2,6 @@ import axios, { isCancel, AxiosError } from "axios";
 import API_KEY from "./apiKey.js";
 import navigator from "./navigation.js";
 import * as nodes from "./nodes.js";
-import { getTrendMovies } from "./trendMovies.js";
 
 export const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -36,3 +35,20 @@ function closeHamMenu() {
   toggleHamMenuView();
 }
 nodes.moviesContainer.addEventListener("click", closeHamMenu);
+
+// API requests
+export const getTrendMovies = async (range = "day") => {
+  const { data } = await api(`trending/movie/${range}`);
+  const trendMovies = data.results;
+  return trendMovies.slice(0, 15);
+};
+export async function getGenreList() {
+  try {
+    const { data } = await api("genre/movie/list");
+    const genreList = data.genres;
+    console.log(genreList);
+    return genreList;
+  } catch (error) {
+    console.error(error);
+  }
+}
