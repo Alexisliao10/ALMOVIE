@@ -29,6 +29,7 @@ export async function renderTrendMovies(range) {
     trendMovies.forEach((movie, i) => {
       const ratingInfo = (movie.vote_average / 2).toFixed(1);
       const movieCard = document.createElement("figure");
+      const movieInfoContainer = document.createElement("div");
       const movieOverview = document.createElement("p");
       const movieGenresContainer = document.createElement("div");
       const movieImg = document.createElement("img");
@@ -41,8 +42,14 @@ export async function renderTrendMovies(range) {
       const starIcon = document.createElement("i");
 
       movieCard.classList.add("relative", "z-auto");
-      movieOverview.classList.add(
+      movieInfoContainer.classList.add(
         "absolute",
+        "z-10",
+        "opacity-0",
+        "cursor-pointer",
+        "h-full",
+      );
+      movieOverview.classList.add(
         "mt-2",
         "line-clamp-10",
         "max-h-40",
@@ -71,8 +78,7 @@ export async function renderTrendMovies(range) {
       });
       movieCardFooter.classList.add(
         "absolute",
-        "bottom-12",
-        "z-10",
+        "top-[230px]",
         "flex",
         "w-full",
         "items-center",
@@ -107,9 +113,10 @@ export async function renderTrendMovies(range) {
       anchor.append(viewMore);
       movieRatingContainer.append(rating, starIcon);
       movieCardFooter.append(anchor, movieRatingContainer);
-      movieCard.append(movieOverview);
-      movieCard.append(movieGenresContainer);
-      movieCard.append(movieCardFooter);
+      movieInfoContainer.append(movieOverview);
+      movieInfoContainer.append(movieGenresContainer);
+      movieInfoContainer.append(movieCardFooter);
+      movieCard.append(movieInfoContainer);
       movieCard.append(movieImg, movieTitle);
       trendMoviesContainer.append(movieCard);
     });
