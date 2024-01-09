@@ -3,7 +3,7 @@ import API_KEY from "./apiKey.js";
 import navigator from "./navigation.js";
 import * as nodes from "./nodes.js";
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   headers: {
     "Content-Type": "application/json;charset=utf-8",
@@ -46,7 +46,6 @@ export async function getGenreList() {
   try {
     const { data } = await api("genre/movie/list");
     const genreList = data.genres;
-    console.log(genreList);
     return genreList;
   } catch (error) {
     console.error(error);

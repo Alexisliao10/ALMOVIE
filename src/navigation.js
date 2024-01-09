@@ -1,4 +1,4 @@
-import { renderTrendMovies, getInfoMovies } from "./trendMovies.js";
+import { renderTrendMovies } from "./trendMovies.js";
 import * as node from "./nodes.js";
 
 const hashPages = {
@@ -27,7 +27,6 @@ function navigator() {
 
 function homePage() {
   renderTrendMovies();
-  getInfoMovies();
 }
 
 function trendsPage() {

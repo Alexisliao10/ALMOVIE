@@ -1,14 +1,99 @@
 import { getTrendMovies, getGenreList } from "./main.js";
+
+function getIdName(id, list, range = 3) {
+  const names = [];
+  for (let i = 0; i < id.length; i++) {
+    const idFound = list.find((item) => item.id === id[i]);
+    if (idFound) {
+      names.push(idFound.name);
+    }
+  }
+  return names.slice(0, range);
+}
+async function getGenreNames(apiData, range) {
+  const list = await getGenreList();
+  let genreList = [];
+  apiData.forEach((data) => {
+    const genres = getIdName(data.genre_ids, list, range);
+    genreList.push(genres);
+  });
+  return genreList;
+}
+
 export async function renderTrendMovies(range) {
   try {
     const trendMovies = await getTrendMovies(range);
-    trendMovies.forEach((movie) => {
-      const trendMoviesContainer = document.querySelector("#trendMovies");
+    const genreNames = await getGenreNames(trendMovies, 3);
+    const trendMoviesContainer = document.querySelector("#trendMovies");
 
+    trendMovies.forEach((movie, i) => {
+      const ratingInfo = (movie.vote_average / 2).toFixed(1);
       const movieCard = document.createElement("figure");
-      // const link = document.createElement("a");
+      const movieOverview = document.createElement("p");
+      const movieGenresContainer = document.createElement("div");
       const movieImg = document.createElement("img");
       const movieTitle = document.createElement("figcaption");
+      const movieCardFooter = document.createElement("div");
+      const anchor = document.createElement("a");
+      const viewMore = document.createElement("p");
+      const movieRatingContainer = document.createElement("div");
+      const rating = document.createElement("p");
+      const starIcon = document.createElement("i");
+
+      movieCard.classList.add("relative", "z-auto");
+      movieOverview.classList.add(
+        "absolute",
+        "mt-2",
+        "line-clamp-10",
+        "max-h-40",
+        "text-ellipsis",
+        "px-2",
+        "text-start",
+        "text-xs",
+      );
+      movieOverview.textContent = movie.overview;
+      movieGenresContainer.classList.add(
+        "absolute",
+        "top-44",
+        "flex",
+        "w-full",
+        "flex-wrap",
+        "justify-start",
+        "gap-2",
+        "px-2",
+      );
+
+      genreNames[i].forEach((name) => {
+        const movieGenre = document.createElement("p");
+        movieGenre.classList.add("genre", "text-xxs");
+        movieGenre.textContent = name;
+        movieGenresContainer.append(movieGenre);
+      });
+      movieCardFooter.classList.add(
+        "absolute",
+        "bottom-12",
+        "z-10",
+        "flex",
+        "w-full",
+        "items-center",
+        "justify-between",
+        "gap-1",
+        "px-2",
+      );
+      anchor.classList.add("cursor-pointer", "hover:text-azure");
+      viewMore.classList.add("text-[11px]");
+      viewMore.textContent = "View More...";
+      movieRatingContainer.classList.add("flex", "items-center", "gap-1");
+      rating.classList.add("rating", "text-sm");
+      rating.textContent = ratingInfo;
+      starIcon.classList.add(
+        "fa-solid",
+        "fa-star",
+        "fa-sm",
+        "pb-1",
+        "text-amber-500",
+      );
+
       movieImg.classList.add(
         "rounded-lg",
         "active:border-2",
@@ -18,33 +103,17 @@ export async function renderTrendMovies(range) {
       movieImg.alt = movie.title;
       movieTitle.textContent = movie.title;
       movieTitle.classList.add("w-full", "text-center", "mt-2");
-
+      // appends
+      anchor.append(viewMore);
+      movieRatingContainer.append(rating, starIcon);
+      movieCardFooter.append(anchor, movieRatingContainer);
+      movieCard.append(movieOverview);
+      movieCard.append(movieGenresContainer);
+      movieCard.append(movieCardFooter);
       movieCard.append(movieImg, movieTitle);
       trendMoviesContainer.append(movieCard);
     });
   } catch (error) {
     throw new Error(error.message);
   }
-}
-
-async function findNameOfId(id) {
-  try {
-    const genreList = await getGenreList();
-    const genre = genreList.find((genre) => genre.id === id);
-
-    if (genre) {
-      return genre.name;
-    } else {
-      console.log("no genre found");
-    }
-  } catch (error) {
-    throw new Error(error.message);
-  }
-}
-
-export async function getInfoMovies(range) {
-  const data = await getTrendMovies(range);
-  console.log(data[0].genre_ids[0]);
-  const name = await findNameOfId(data[0].genre_ids[0]);
-  console.log(name);
 }

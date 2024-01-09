@@ -18,3 +18,9 @@
   background-color: #057aff;
   border-radius: 50%;
 }
+
+.genre::before {
+  content: "🟡 ";
+  font-size: 8px;
+  vertical-align: middle;
+}

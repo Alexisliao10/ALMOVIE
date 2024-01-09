@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}", "./public/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}", "./public/index.html"],
   theme: {
     fontFamily: {
       sans: ["Noto Sans", "sans-serif"],
@@ -16,7 +16,10 @@ module.exports = {
         "secondary-color-t": "#F9F9F9",
       },
       lineClamp: {
-        8: "8",
+        10: "10",
+      },
+      fontSize: {
+        xxs: "10px",
       },
     },
   },

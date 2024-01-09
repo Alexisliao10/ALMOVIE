@@ -60,6 +60,7 @@
             placeholder="Search"
           />
           <i
+            title="search"
             class="fa-solid fa-magnifying-glass mx-3 text-white hover:cursor-pointer"
           ></i>
         </div>
@@ -68,9 +69,9 @@
         <h1 class="my-4 text-base font-black">Trending Movies</h1>
         <article id="trendMovies" class="grid grid-cols-2 gap-4">
           <!-- TODO -->
-          <figure class="relative">
+          <figure class="relative z-auto">
             <p
-              class="line-clamp-8 absolute mt-2 max-h-36 text-ellipsis px-2 text-start text-xs"
+              class="absolute mt-2 line-clamp-10 max-h-40 text-ellipsis px-2 text-start text-xs"
             >
               Las vacaciones de una familia dan un giro escalofriante cuando dos
               desconocidos se presentan en plena noche buscando refugio frente a
@@ -78,15 +79,30 @@
               situación, todos deberán asumir su papel en un mundo que se
               desmorona.
             </p>
-            <p class="absolute top-5">Genre</p>
-            <a href="#" class="cursor-auto">
-              <img
-                class="rounded-lg opacity-20 active:border-2 active:border-sky-500"
-                src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
-                alt=""
-              />
-              <figcaption class="w-full text-center">Movie Title</figcaption>
-            </a>
+            <div
+              class="absolute top-44 flex w-full flex-wrap justify-start gap-2 px-2"
+            >
+              <p class="genre text-xxs">Science fiction</p>
+              <p class="genre text-xxs">Mistery</p>
+              <p class="genre text-xxs">Thriller</p>
+            </div>
+            <div
+              class="absolute bottom-12 z-10 flex w-full items-center justify-between gap-1 px-2"
+            >
+              <a href="#" class="cursor-pointer hover:text-azure">
+                <p class="text-[11px]">View More...</p>
+              </a>
+              <div id="movieRatingStart" class="flex items-center gap-1">
+                <p class="rating text-sm">4.5</p>
+                <i class="fa-solid fa-star fa-sm pb-1 text-amber-500"></i>
+              </div>
+            </div>
+            <img
+              class="rounded-lg opacity-20 active:border-2 active:border-sky-500"
+              src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
+              alt=""
+            />
+            <figcaption class="w-full text-center">Movie Title</figcaption>
           </figure>
           <!-- End TODO -->
         </article>
