@@ -1,5 +1,5 @@
 import { renderTrendMovies } from "./trendMovies.js";
-import * as node from "./nodes.js";
+import * as nodes from "./nodes.js";
 
 const hashPages = {
   "#trends": trendsPage,

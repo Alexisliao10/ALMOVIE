@@ -1,5 +1,5 @@
-import { getTrendMovies, getGenreList } from "./main.js";
-
+import * as nodes from "./nodes.js";
+import { genresMovieList, trendMovies } from "./getDataApi.js";
 function getIdName(id, list, range = 3) {
   const names = [];
   for (let i = 0; i < id.length; i++) {
@@ -11,7 +11,7 @@ function getIdName(id, list, range = 3) {
   return names.slice(0, range);
 }
 async function getGenreNames(apiData, range) {
-  const list = await getGenreList();
+  const list = await genresMovieList;
   let genreList = [];
   apiData.forEach((data) => {
     const genres = getIdName(data.genre_ids, list, range);
@@ -19,15 +19,14 @@ async function getGenreNames(apiData, range) {
   });
   return genreList;
 }
-
 export async function renderTrendMovies(range) {
   try {
-    const trendMovies = await getTrendMovies(range);
-    const genreNames = await getGenreNames(trendMovies, 3);
-    const trendMoviesContainer = document.querySelector("#trendMovies");
+    const resTrendMovies = await trendMovies;
+    const genreNames = await getGenreNames(resTrendMovies, 3);
 
-    trendMovies.forEach((movie, i) => {
-      const ratingInfo = (movie.vote_average / 2).toFixed(1);
+    resTrendMovies.forEach((movie, i) => {
+      // variables
+      const ratingInfo = movie.vote_average.toFixed(1);
       const movieCard = document.createElement("figure");
       const movieInfoContainer = document.createElement("div");
       const movieOverview = document.createElement("p");
@@ -41,13 +40,20 @@ export async function renderTrendMovies(range) {
       const rating = document.createElement("p");
       const starIcon = document.createElement("i");
 
-      movieCard.classList.add("relative", "z-auto");
+      // classlist
+      movieCard.classList.add(
+        "relative",
+        "z-auto",
+        "w-full",
+        "max-w-xs",
+        "cursor-pointer",
+        "select-none",
+      );
       movieInfoContainer.classList.add(
         "absolute",
         "z-10",
         "opacity-0",
-        "cursor-pointer",
-        "h-full",
+        "transition-all",
       );
       movieOverview.classList.add(
         "mt-2",
@@ -60,8 +66,8 @@ export async function renderTrendMovies(range) {
       );
       movieOverview.textContent = movie.overview;
       movieGenresContainer.classList.add(
-        "absolute",
         "top-44",
+        "mt-2",
         "flex",
         "w-full",
         "flex-wrap",
@@ -89,7 +95,12 @@ export async function renderTrendMovies(range) {
       anchor.classList.add("cursor-pointer", "hover:text-azure");
       viewMore.classList.add("text-[11px]");
       viewMore.textContent = "View More...";
-      movieRatingContainer.classList.add("flex", "items-center", "gap-1");
+      movieRatingContainer.classList.add(
+        "flex",
+        "items-center",
+        "gap-1",
+        "z-20",
+      );
       rating.classList.add("rating", "text-sm");
       rating.textContent = ratingInfo;
       starIcon.classList.add(
@@ -101,14 +112,18 @@ export async function renderTrendMovies(range) {
       );
 
       movieImg.classList.add(
+        "relative",
+        "w-full",
         "rounded-lg",
         "active:border-2",
         "active:border-sky-500",
+        "select-none",
       );
       movieImg.src = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
       movieImg.alt = movie.title;
+      movieImg.draggable = false;
       movieTitle.textContent = movie.title;
-      movieTitle.classList.add("w-full", "text-center", "mt-2");
+      movieTitle.classList.add("relative", "w-full", "text-center", "mt-2");
       // appends
       anchor.append(viewMore);
       movieRatingContainer.append(rating, starIcon);
@@ -118,7 +133,14 @@ export async function renderTrendMovies(range) {
       movieInfoContainer.append(movieCardFooter);
       movieCard.append(movieInfoContainer);
       movieCard.append(movieImg, movieTitle);
-      trendMoviesContainer.append(movieCard);
+
+      // main movie container
+      nodes.trendMoviesContainer.append(movieCard);
+      // function
+      movieCard.addEventListener("click", () => {
+        movieInfoContainer.classList.toggle("opacity-0");
+        movieImg.classList.toggle("opacity-20");
+      });
     });
   } catch (error) {
     throw new Error(error.message);

@@ -8,6 +8,7 @@ export const menu = $("main div ul");
 
 // main
 export const moviesContainer = $("main > section");
+export const trendMoviesContainer = $("#trendMovies");
 export const divContainer = $("main > div");
 export const inputContainer = $("main > div > div");
 export const sectionTrending = $("main > section");

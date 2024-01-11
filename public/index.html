@@ -25,37 +25,38 @@
     />
     <link rel="stylesheet" href="./assets/app.css" />
   </head>
-  <body class="bg-primary-color-b">
+  <body class="overflow-x-clip bg-primary-color-b">
     <header
-      class="flex h-[85px] items-center justify-between overflow-hidden bg-secondary-color-b py-1 pl-2 pr-5"
+      class="flex h-[85px] items-center justify-center overflow-y-clip bg-secondary-color-b py-2"
     >
-      <a href="#"
-        ><img width="110" src="./assets/ALMOVIE-logo.png" alt="ALMOVIE logo"
-      /></a>
-      <nav>
-        <div class="hamMenu">
-          <i class="fa-solid fa-bars fa-lg text-white"></i>
-          <i class="fa-solid fa-xmark fa-lg hidden"></i>
-        </div>
-      </nav>
+      <div class="flex w-full max-w-4xl items-center justify-between pl-2 pr-5">
+        <a href="#"
+          ><img width="110" src="./assets/ALMOVIE-logo.png" alt="ALMOVIE logo"
+        /></a>
+        <nav>
+          <div class="hamMenu">
+            <i class="fa-solid fa-bars fa-lg text-white"></i>
+            <i class="fa-solid fa-xmark fa-lg hidden"></i>
+          </div>
+        </nav>
+      </div>
     </header>
-    <main class="px-5">
+    <main class="m-[0_auto] max-w-4xl px-5">
       <div class="relative h-12 overflow-y-clip transition-all">
         <ul
-          duration-1000
-          class="absolute mx-[-1.25rem] mb-4 grid w-screen -translate-y-full grid-cols-1 gap-3 bg-secondary-color-b px-5 py-3 transition-all"
+          class="absolute mx-[-1.25rem] mb-4 grid w-screen max-w-4xl -translate-y-full grid-cols-1 gap-3 bg-secondary-color-b px-5 py-3 transition-all"
         >
-          <li><a href="./">Home</a></li>
-          <li><a href="#series">Series</a></li>
-          <li><a href="#movies">Movies</a></li>
-          <li><a href="#newRelease">New Release</a></li>
+          <li><a class="fancy-link" href="./">Home</a></li>
+          <li><a class="fancy-link" href="#series">Series</a></li>
+          <li><a class="fancy-link" href="#movies">Movies</a></li>
+          <li><a class="fancy-link" href="#newRelease">New Release</a></li>
         </ul>
         <div
           class="relative top-3 flex h-[31px] w-full items-center justify-between rounded-lg bg-softBlue transition-all"
         >
           <input
             id="searchBar"
-            class="bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
+            class="w-full bg-[transparent] px-3 text-white placeholder:italic placeholder:text-slate-400 focus:outline-none"
             type="text"
             placeholder="Search"
           />
@@ -67,10 +68,14 @@
       </div>
       <section class="content mt-10 transition-opacity">
         <h1 class="my-4 text-base font-black">Trending Movies</h1>
-        <article id="trendMovies" class="grid grid-cols-2 gap-4">
-          <!-- TODO -->
-          <figure class="relative z-auto">
-            <div class="absolute z-10">
+        <article
+          id="trendMovies"
+          class="grid grid-cols-2 justify-items-center gap-4"
+        >
+          <!-- <figure class="relative z-auto w-full max-w-xs cursor-pointer">
+            <div
+              class="absolute z-10 h-full cursor-pointer opacity-0 transition-all focus:opacity-100"
+            >
               <p
                 class="mt-2 line-clamp-10 max-h-40 text-ellipsis px-2 text-start text-xs"
               >
@@ -81,7 +86,7 @@
                 se desmorona.
               </p>
               <div
-                class="absolute top-44 flex w-full flex-wrap justify-start gap-2 px-2"
+                class="top-44 mt-2 flex w-full flex-wrap justify-start gap-2 px-2"
               >
                 <p class="genre text-xxs">Science fiction</p>
                 <p class="genre text-xxs">Mistery</p>
@@ -100,13 +105,14 @@
               </div>
             </div>
             <img
-              class="rounded-lg opacity-20 active:border-2 active:border-sky-500"
+              class="relative w-full rounded-lg opacity-20 active:border-2 active:border-sky-500"
               src="https://cuevana.pro/resize/200/storage/65975/PRHY4Jj1GRDrY4DAmhtIv9FDUJ2sRwiWBaG6VFFY.jpg"
               alt=""
             />
-            <figcaption class="w-full text-center">Movie Title</figcaption>
-          </figure>
-          <!-- End TODO -->
+            <figcaption class="relative w-full text-center">
+              Movie Title
+            </figcaption>
+          </figure> -->
         </article>
       </section>
       <aside class="hidden">
