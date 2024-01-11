@@ -1,11 +1,10 @@
-import navigator from "./navigation.js";
-import * as nodes from "./nodes.js";
+import navigator from "./utilities/navigation.js";
+import * as nodes from "./utilities/nodes.js";
 
 window.addEventListener("DOMContentLoaded", navigator);
 window.addEventListener("hashchange", navigator);
 
 nodes.hamMenu.addEventListener("click", toggleHamMenuView);
-
 function toggleHamMenuView() {
   nodes.hamIcon.classList.toggle("hidden");
   nodes.quitIcon.classList.toggle("hidden");
