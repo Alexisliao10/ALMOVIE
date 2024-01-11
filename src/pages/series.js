@@ -1,5 +1,5 @@
-import * as nodes from "../utilities/nodes";
+import * as nodes from "../utilities/nodes.js";
 
-function seriesPage() {
-  nodes.sectionTitle.textContent;
+export function putSeries() {
+  nodes.sectionTitle.textContent = "Trending Series";
 }

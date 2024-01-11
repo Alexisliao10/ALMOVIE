@@ -16,6 +16,7 @@ const api = axios.create({
 
 export async function getApiData(url, type = "results") {
   const { data } = await api(url);
+  console.log("got data");
   return data[type];
 }
 

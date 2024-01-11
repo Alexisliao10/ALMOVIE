@@ -21,3 +21,7 @@ function closeHamMenu() {
   toggleHamMenuView();
 }
 nodes.moviesContainer.addEventListener("click", closeHamMenu);
+nodes.navHome.addEventListener("click", closeHamMenu);
+nodes.navSeries.addEventListener("click", closeHamMenu);
+nodes.navMovies.addEventListener("click", closeHamMenu);
+nodes.navNewRelease.addEventListener("click", closeHamMenu);

@@ -24,7 +24,7 @@ export default async function renderPreviewCards({
   listOutput = 3,
 }) {
   try {
-    node.trendMoviesContainer.innerHTML = "";
+    // node.articleContainer.innerHTML = "";
     const res = await apiData;
     const genreNames = await getGenreNames({
       apiData: res,
@@ -143,7 +143,7 @@ export default async function renderPreviewCards({
       movieCard.append(movieImg, movieTitle);
 
       // main movie container
-      node.trendMoviesContainer.append(movieCard);
+      node.articleContainer.append(movieCard);
       // function
       movieCard.addEventListener("click", () => {
         movieInfoContainer.classList.toggle("opacity-0");

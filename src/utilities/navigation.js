@@ -1,12 +1,14 @@
 import renderPreviewCards from "../pages/renderCards.js";
-import * as nodes from "./nodes.js";
+import * as node from "./nodes.js";
 import {
   genresMovieList,
   trendMovies,
   trendSeries,
   genresSeriesList,
 } from "../utilities/getDataApi.js";
-
+import { putSeries } from "../pages/series.js";
+import { moreDetailsLayout } from "../pages/moreDetails.js";
+import { homeLayout } from "../pages/home.js";
 const hashPages = {
   "#trends": trendsPage,
   "#search=": searchPage,
@@ -32,6 +34,7 @@ function navigator() {
 // }
 
 function homePage() {
+  homeLayout();
   renderPreviewCards({
     apiData: trendMovies,
     list: genresMovieList,
@@ -48,6 +51,7 @@ function searchPage() {
 }
 
 function seriesPage() {
+  putSeries();
   renderPreviewCards({
     apiData: trendSeries,
     list: genresSeriesList,
@@ -64,6 +68,7 @@ function newReleasePage() {
 }
 
 function moviePreviewPage() {
+  moreDetailsLayout();
   console.log("movie preview");
 }
 
