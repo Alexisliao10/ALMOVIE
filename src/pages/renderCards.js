@@ -1,5 +1,5 @@
 import * as node from "../utilities/nodes.js";
-function getIdName(id, list, range) {
+export function getIdName(id, list, range) {
   const names = [];
   for (let i = 0; i < id.length; i++) {
     const idFound = list.find((item) => item.id === id[i]);
@@ -24,11 +24,11 @@ export default async function renderPreviewCards({
   listOutput = 3,
 }) {
   try {
-    // node.articleContainer.innerHTML = "";
+    node.articleContainer.innerHTML = "";
     const res = await apiData;
     const genreNames = await getGenreNames({
-      apiData: res,
       list: list,
+      apiData: res,
       listOutput: listOutput,
     });
 
@@ -48,7 +48,7 @@ export default async function renderPreviewCards({
       const rating = document.createElement("p");
       const starIcon = document.createElement("i");
 
-      // classlist
+      // classlist/attribute
       movieCard.classList.add(
         "relative",
         "z-auto",
@@ -130,6 +130,7 @@ export default async function renderPreviewCards({
       movieImg.src = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
       movieImg.alt = movie.title;
       movieImg.draggable = false;
+      movieImg.setAttribute("loading", "lazy");
       movieTitle.textContent = movie.title;
       movieTitle.classList.add("relative", "w-full", "text-center", "mt-2");
       // appends
@@ -148,6 +149,9 @@ export default async function renderPreviewCards({
       movieCard.addEventListener("click", () => {
         movieInfoContainer.classList.toggle("opacity-0");
         movieImg.classList.toggle("opacity-20");
+      });
+      anchor.addEventListener("click", () => {
+        location.hash = "#movie=" + movie.id + "-" + movie.title;
       });
     });
   } catch (error) {

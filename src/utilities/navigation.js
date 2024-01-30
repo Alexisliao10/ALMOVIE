@@ -7,20 +7,21 @@ import {
   genresSeriesList,
 } from "../utilities/getDataApi.js";
 import { putSeries } from "../pages/series.js";
-import { moreDetailsLayout } from "../pages/moreDetails.js";
+import { moreDetailsLayout, renderMoreDetails } from "../pages/moreDetails.js";
 import { homeLayout } from "../pages/home.js";
+
 const hashPages = {
   "#trends": trendsPage,
-  "#search=": searchPage,
+  "#search": searchPage,
   "#series": seriesPage,
   "#movies": moviesPage,
   "#newRelease": newReleasePage,
-  "#movie=": moviePreviewPage,
+  "#movie": moviePreviewPage,
   "#error404": error404,
 };
 
 function navigator() {
-  const hash = location.hash;
+  const hash = location.hash.split("=")[0];
 
   if (hashPages[hash]) {
     hashPages[hash]();
@@ -67,8 +68,11 @@ function newReleasePage() {
   console.log("new release");
 }
 
-function moviePreviewPage() {
+export function moviePreviewPage() {
+  const [_, movieInfo] = location.hash.split("=");
+  const [movieId] = movieInfo.split("-");
   moreDetailsLayout();
+  renderMoreDetails(movieId); // TODO add data type (movie or series)
   console.log("movie preview");
 }
 
