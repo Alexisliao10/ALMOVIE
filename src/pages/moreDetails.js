@@ -38,22 +38,25 @@ export async function renderMoreDetails(id, type) {
     return duration;
   };
   // classlist / attribute
-  node.backBtnContainer.classList.add("my-4", "px-5");
-  node.anchor.href = "#home";
-  node.backIcon.classList.add(
+  nodes.backBtnContainer.classList.add("my-4", "px-5");
+  nodes.anchor.onclick = function () {
+    history.back();
+  };
+  nodes.backIcon.classList.add(
     "fa-solid",
     "fa-arrow-left",
     "fa-xl",
     "text-white",
+    "hover:cursor-pointer",
   );
-  node.backdropImg.classList.add(
+  nodes.backdropImg.classList.add(
     "h-[240px]",
     "w-full",
     "bg-cover",
     "bg-center",
   );
-  node.backdropImg.src = `https://image.tmdb.org/t/p/w780/${movieInfo.backdrop_path}`;
-  node.movieTitle.classList.add(
+  nodes.backdropImg.src = `https://image.tmdb.org/t/p/w780/${movieInfo.backdrop_path}`;
+  nodes.movieTitle.classList.add(
     "my-4",
     "flex",
     "justify-center",
@@ -61,9 +64,9 @@ export async function renderMoreDetails(id, type) {
     "text-[22px]",
     "font-black",
   );
-  node.movieTitle.textContent = movieInfo.title;
-  node.infoContainer.classList.add("bg-secondary-color-b", "py-2", "text-sm");
-  node.timeContainer.classList.add(
+  nodes.movieTitle.textContent = movieInfo.title;
+  nodes.infoContainer.classList.add("bg-secondary-color-b", "py-2", "text-sm");
+  nodes.timeContainer.classList.add(
     "relative",
     "m-[0_auto]",
     "flex",
@@ -71,11 +74,11 @@ export async function renderMoreDetails(id, type) {
     "justify-center",
     "gap-2",
   );
-  node.releaseDate.textContent = movieInfo.release_date;
-  node.separator.textContent = "|";
-  node.duration.textContent = duration(runtime).join(" "); // TODO
-  node.ratingContainer.id = "movieRatingStart-infoSec";
-  node.ratingContainer.classList.add(
+  nodes.releaseDate.textContent = movieInfo.release_date;
+  nodes.separator.textContent = "|";
+  nodes.duration.textContent = duration(runtime).join(" "); // TODO
+  nodes.ratingContainer.id = "movieRatingStart-infoSec";
+  nodes.ratingContainer.classList.add(
     "absolute",
     "-right-24",
     "top-[0.7rem]",
@@ -83,48 +86,48 @@ export async function renderMoreDetails(id, type) {
     "items-center",
     "gap-2",
   );
-  node.ratingScore.classList.add("rating", "text-l");
-  node.ratingScore.textContent = movieInfo.vote_average.toFixed(1);
-  node.ratingIcon.classList.add(
+  nodes.ratingScore.classList.add("rating", "text-l");
+  nodes.ratingScore.textContent = movieInfo.vote_average.toFixed(1);
+  nodes.ratingIcon.classList.add(
     "fa-solid",
     "fa-star",
     "fa-md",
     "text-amber-500",
   );
-  node.genreContainer.classList.add("flex", "justify-center", "gap-2");
-  node.genreContainer.textContent = genreNames;
-  node.overviewContainer.classList.add("px-5");
-  node.overview.classList.add("mt-6", "font-sans", "text-xl", "font-bold");
-  node.overview.textContent = "Overview";
-  node.movieOverview.classList.add("mt-1", "text-base");
-  node.movieOverview.textContent = movieInfo.overview; // TODO
-  node.director.classList.add("mt-9", "font-bold");
-  node.director.textContent = directorName;
-  node.positionTitle.classList.add("text-sm");
-  node.positionTitle.textContent = "Director";
+  nodes.genreContainer.classList.add("flex", "justify-center", "gap-2");
+  nodes.genreContainer.textContent = genreNames;
+  nodes.overviewContainer.classList.add("px-5");
+  nodes.overview.classList.add("mt-6", "font-sans", "text-xl", "font-bold");
+  nodes.overview.textContent = "Overview";
+  nodes.movieOverview.classList.add("mt-1", "text-base");
+  nodes.movieOverview.textContent = movieInfo.overview; // TODO
+  nodes.director.classList.add("mt-9", "font-bold");
+  nodes.director.textContent = directorName;
+  nodes.positionTitle.classList.add("text-sm");
+  nodes.positionTitle.textContent = "Director";
   // appends
-  node.anchor.append(node.backIcon);
-  node.backBtnContainer.append(node.anchor);
-  node.backdropContainer.append(node.backdropImg, node.movieTitle);
-  node.ratingContainer.append(node.ratingScore, node.ratingIcon);
-  node.timeContainer.append(
-    node.releaseDate,
-    node.separator,
-    node.duration,
-    node.ratingContainer,
+  nodes.anchor.append(nodes.backIcon);
+  nodes.backBtnContainer.append(nodes.anchor);
+  nodes.backdropContainer.append(nodes.backdropImg, nodes.movieTitle);
+  nodes.ratingContainer.append(nodes.ratingScore, nodes.ratingIcon);
+  nodes.timeContainer.append(
+    nodes.releaseDate,
+    nodes.separator,
+    nodes.duration,
+    nodes.ratingContainer,
   );
-  node.infoContainer.append(node.timeContainer, node.genreContainer);
-  node.overviewContainer.append(
-    node.overview,
-    node.movieOverview,
-    node.director,
-    node.positionTitle,
+  nodes.infoContainer.append(nodes.timeContainer, nodes.genreContainer);
+  nodes.overviewContainer.append(
+    nodes.overview,
+    nodes.movieOverview,
+    nodes.director,
+    nodes.positionTitle,
   );
-  node.moreDetailsView.append(
-    node.backBtnContainer,
-    node.backdropContainer,
-    node.infoContainer,
-    node.overviewContainer,
+  nodes.moreDetailsView.append(
+    nodes.backBtnContainer,
+    nodes.backdropContainer,
+    nodes.infoContainer,
+    nodes.overviewContainer,
   );
 }
 

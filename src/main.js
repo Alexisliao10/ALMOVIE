@@ -1,8 +1,10 @@
-import navigator from "./utilities/navigation.js";
+import { navigate } from "./utilities/navigation.js";
 import * as nodes from "./utilities/nodes.js";
 
-window.addEventListener("DOMContentLoaded", navigator);
-window.addEventListener("hashchange", navigator);
+location.hash = "#home";
+
+window.addEventListener("load", navigate);
+window.addEventListener("hashchange", navigate);
 
 nodes.hamMenu.addEventListener("click", toggleHamMenuView);
 function toggleHamMenuView() {
