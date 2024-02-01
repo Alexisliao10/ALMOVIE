@@ -4,11 +4,13 @@ import renderPreviewCards from "./renderCards.js";
 
 export function searchViewLayout() {
   nodes.moviesContainerTitle.classList.add("hidden");
+  nodes.moreDetailsView.innerHTML = "";
+  nodes.moviesContainer.classList.remove("hidden");
 }
 
-export async function searchMovies(page) {
+export async function searchMovies(page = 1) {
   const [_, query] = location.hash.split("=");
   const searchData = await searchMoviesAPI(query, page);
-  console.log("🚀 ~ searchMovies ~ searchData:", searchData);
-  renderPreviewCards({ apiData: searchData, list: genresMovieList });
+  const validData = searchData.filter((movie) => movie.poster_path);
+  renderPreviewCards({ apiData: validData, list: genresMovieList });
 }
