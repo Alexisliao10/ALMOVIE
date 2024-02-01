@@ -14,6 +14,5 @@ export async function searchMovies(page = 1) {
   const validData = searchData.filter(
     (movie) => movie.poster_path && movie.overview,
   );
-  console.log("🚀 ~ searchMovies ~ validData:", validData);
   renderPreviewCards({ apiData: validData, list: genresMovieList });
 }

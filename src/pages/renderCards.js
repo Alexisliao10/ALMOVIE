@@ -1,6 +1,6 @@
 import * as node from "../utilities/nodes.js";
 import { genreList } from "../utilities/getDataApi.js";
-export function getIdName(id, list, range) {
+export function getIdName(id, list) {
   const names = [];
   for (let i = 0; i < id.length; i++) {
     const idFound = list.find((item) => item.id === id[i]);
@@ -8,28 +8,25 @@ export function getIdName(id, list, range) {
       names.push(idFound.name);
     }
   }
-  return names.slice(0, range);
+  return names.slice(0, 3); // How many genres should be displayed
 }
-async function getGenreNames({ apiData, range }) {
+async function getGenreNames(apiData) {
   const resList = genreList;
   let list = [];
   apiData.forEach((data) => {
-    const genres = getIdName(data.genre_ids, resList, range);
+    const genres = getIdName(data.genre_ids, resList);
     list.push(genres);
   });
   return list;
 }
 export let dataForViewMore = [];
-export default async function renderPreviewCards({ apiData, listOutput = 3 }) {
+export default async function renderPreviewCards(apiData) {
   try {
     node.articleContainer.innerHTML = "";
     const res = await apiData;
     dataForViewMore = [];
     dataForViewMore.push(res);
-    const genreNames = await getGenreNames({
-      apiData: res,
-      listOutput: listOutput,
-    });
+    const genreNames = await getGenreNames(res);
 
     res.forEach((movie, i) => {
       // variables

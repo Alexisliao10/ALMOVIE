@@ -26,9 +26,7 @@ export function navigate() {
 
 function homePage() {
   homeLayout();
-  renderPreviewCards({
-    apiData: trendMovies,
-  });
+  renderPreviewCards(trendMovies);
   console.log("home");
 }
 
@@ -44,9 +42,7 @@ function searchPage() {
 
 function seriesPage() {
   putSeries();
-  renderPreviewCards({
-    apiData: trendSeries,
-  });
+  renderPreviewCards(trendSeries);
   console.log("series");
 }
 
