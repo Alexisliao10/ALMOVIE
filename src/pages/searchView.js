@@ -11,6 +11,9 @@ export function searchViewLayout() {
 export async function searchMovies(page = 1) {
   const [_, query] = location.hash.split("=");
   const searchData = await searchMoviesAPI(query, page);
-  const validData = searchData.filter((movie) => movie.poster_path);
+  const validData = searchData.filter(
+    (movie) => movie.poster_path && movie.overview,
+  );
+  console.log("🚀 ~ searchMovies ~ validData:", validData);
   renderPreviewCards({ apiData: validData, list: genresMovieList });
 }

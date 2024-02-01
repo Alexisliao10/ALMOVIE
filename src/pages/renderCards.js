@@ -19,10 +19,13 @@ async function getGenreNames({ apiData, range }) {
   });
   return list;
 }
+export let dataForViewMore = [];
 export default async function renderPreviewCards({ apiData, listOutput = 3 }) {
   try {
     node.articleContainer.innerHTML = "";
     const res = await apiData;
+    dataForViewMore = [];
+    dataForViewMore.push(res);
     const genreNames = await getGenreNames({
       apiData: res,
       listOutput: listOutput,
@@ -128,7 +131,7 @@ export default async function renderPreviewCards({ apiData, listOutput = 3 }) {
       movieImg.draggable = false;
       movieImg.setAttribute("loading", "lazy");
       movieTitle.textContent = movie.title;
-      movieTitle.classList.add("relative", "w-full", "text-center", "mt-2");
+      movieTitle.classList.add("relative", "text-center", "mt-2");
       // appends
       anchor.append(viewMore);
       movieRatingContainer.append(rating, starIcon);

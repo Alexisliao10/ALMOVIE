@@ -16,19 +16,13 @@ const hashPages = {
 };
 
 export function navigate() {
-  const hash = location.hash.split("=")[0];
-  console.log("🚀 ~ navigator ~ hash:", hash);
-
+  const [hash] = location.hash.split("=");
   if (hashPages[hash]) {
     hashPages[hash]();
   } else {
     homePage();
   }
 }
-
-// function changeHashLocation(hash) {
-//   location.hash = "#" + hash;
-// }
 
 function homePage() {
   homeLayout();
@@ -65,10 +59,10 @@ function newReleasePage() {
 }
 
 export function moviePreviewPage() {
-  const [_, movieInfo] = location.hash.split("=");
+  const [hash, movieInfo] = location.hash.split("=");
   const [movieId] = movieInfo.split("-");
   moreDetailsLayout();
-  renderMoreDetails(movieId); // TODO add data type (movie or series)
+  if (hash) renderMoreDetails(movieId);
   console.log("movie preview");
 }
 

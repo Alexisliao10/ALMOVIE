@@ -5,7 +5,7 @@ import {
   getMovieDetails,
 } from "../utilities/getDataApi.js";
 import * as nodes from "../utilities/nodes.js";
-import { getIdName } from "./renderCards.js";
+import { getIdName, dataForViewMore } from "./renderCards.js";
 
 export function moreDetailsLayout() {
   nodes.moreDetailsView.classList.remove("hidden");
@@ -13,12 +13,12 @@ export function moreDetailsLayout() {
   nodes.moviesContainer.classList.add("hidden");
   nodes.divContainer.classList.remove("h-12");
 }
-export async function renderMoreDetails(id, apiData, type) {
+export async function renderMoreDetails(id) {
   // reset
   nodes.moreDetailsView.innerHTML = "";
   // request
-  const directorName = await getDirector(id, type);
-  const res = await trendMovies;
+  const directorName = await getDirector(id);
+  const res = dataForViewMore[0];
   const [movieInfo] = res.filter((movie) => movie.id == id);
   const genreNames = getIdName(movieInfo.genre_ids, genreList).join(", ");
   const movieDetails = await getMovieDetails(id);

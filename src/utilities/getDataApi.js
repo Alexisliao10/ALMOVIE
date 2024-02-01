@@ -39,7 +39,7 @@ export async function getDirector(id, type = "movie") {
     const data = res.filter(({ job }) => job === "Director");
     return data[0].name;
   } catch (error) {
-    console.log("No movie Found" + error.message);
+    console.log("No movie Found " + error.message);
   }
 }
 // details
