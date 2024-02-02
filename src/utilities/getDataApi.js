@@ -1,5 +1,6 @@
 import axios, { isCancel, AxiosError } from "axios";
 import API_KEY from "../apiKey.js";
+import { upcomingLayout } from "../pages/upcoming.js";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -29,6 +30,8 @@ export const trendMovies = getApiData("trending/movie/day", "results");
 export const trendSeries = getApiData("trending/tv/day", "results");
 // popular
 export const popularMovies = getApiData("movie/popular", "results");
+// upcoming
+export const upcomingMovies = getApiData("movie/upcoming", "results");
 // genres Lists
 export const genresMovieList = getApiData("genre/movie/list", "genres");
 export const genresSeriesList = getApiData("genre/tv/list", "genres");

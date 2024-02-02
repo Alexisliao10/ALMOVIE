@@ -4,18 +4,20 @@ import {
   trendMovies,
   trendSeries,
   popularMovies,
+  upcomingMovies,
 } from "../utilities/getDataApi.js";
 import { putSeries } from "../pages/series.js";
 import { moreDetailsLayout, renderMoreDetails } from "../pages/moreDetails.js";
 import { homeLayout } from "../pages/home.js";
 import { searchViewLayout, searchMovies } from "../pages/searchView.js";
 import { moviesLayout } from "../pages/movie.js";
+import { upcomingLayout } from "../pages/upcoming.js";
 const hashPages = {
   "#trends": trendsPage,
   "#search": searchPage,
   "#series": seriesPage,
   "#movies": moviesPage,
-  "#newRelease": newReleasePage,
+  "#newRelease": upcomingPage,
   "#movie": moviePreviewPage,
   "#error404": error404,
 };
@@ -57,8 +59,10 @@ function moviesPage() {
   console.log("movies");
 }
 
-function newReleasePage() {
-  console.log("new release");
+function upcomingPage() {
+  upcomingLayout();
+  renderPreviewCards(upcomingMovies);
+  console.log("upcoming");
 }
 
 export function moviePreviewPage() {
