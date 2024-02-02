@@ -27,11 +27,12 @@ export async function getApiData(url, entry = null) {
 // trends
 export const trendMovies = getApiData("trending/movie/day", "results");
 export const trendSeries = getApiData("trending/tv/day", "results");
+// popular
+export const popularMovies = getApiData("movie/popular", "results");
 // genres Lists
 export const genresMovieList = getApiData("genre/movie/list", "genres");
 export const genresSeriesList = getApiData("genre/tv/list", "genres");
 export const genreList = await getGenreList();
-// export const genresList = [genresMovieList, ...genresSeriesList];
 // credits
 export async function getDirector(id, type = "movie") {
   try {
@@ -73,5 +74,6 @@ async function getGenreList() {
 
 // testing
 (async () => {
-  const res1 = await genresMovieList;
+  const res1 = await popularMovies;
+  console.log("🚀 ~ res1:", res1);
 })();

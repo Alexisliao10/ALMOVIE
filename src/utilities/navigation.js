@@ -1,10 +1,15 @@
 import renderPreviewCards from "../pages/renderCards.js";
 import * as node from "./nodes.js";
-import { trendMovies, trendSeries } from "../utilities/getDataApi.js";
+import {
+  trendMovies,
+  trendSeries,
+  popularMovies,
+} from "../utilities/getDataApi.js";
 import { putSeries } from "../pages/series.js";
 import { moreDetailsLayout, renderMoreDetails } from "../pages/moreDetails.js";
 import { homeLayout } from "../pages/home.js";
 import { searchViewLayout, searchMovies } from "../pages/searchView.js";
+import { moviesLayout } from "../pages/movie.js";
 const hashPages = {
   "#trends": trendsPage,
   "#search": searchPage,
@@ -47,6 +52,8 @@ function seriesPage() {
 }
 
 function moviesPage() {
+  moviesLayout();
+  renderPreviewCards(popularMovies);
   console.log("movies");
 }
 
