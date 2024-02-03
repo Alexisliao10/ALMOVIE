@@ -1,5 +1,5 @@
 import * as nodes from "../utilities/nodes.js";
-import { searchMoviesAPI, genresMovieList } from "../utilities/getDataApi.js";
+import { searchMoviesAPI, genreList } from "../utilities/getDataApi.js";
 import renderPreviewCards from "./renderCards.js";
 
 export function searchViewLayout() {
@@ -11,8 +11,10 @@ export function searchViewLayout() {
 export async function searchMovies(page = 1) {
   const [_, query] = location.hash.split("=");
   const searchData = await searchMoviesAPI(query, page);
-  const validData = searchData.filter(
+  const resultsData = searchData.results;
+  const validData = resultsData.filter(
     (movie) => movie.poster_path && movie.overview,
   );
-  renderPreviewCards({ apiData: validData, list: genresMovieList });
+  console.log("🚀 ~ searchMovies ~ validData:", validData);
+  renderPreviewCards(validData);
 }
