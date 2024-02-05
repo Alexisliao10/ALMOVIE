@@ -8,6 +8,7 @@ export function searchViewLayout() {
   nodes.moviesContainer.classList.remove("hidden");
 }
 
+export let totalPagesFromSearch;
 export async function searchMovies(page = 1) {
   const [_, query] = location.hash.split("=");
   const searchData = await searchMoviesAPI(query, page);
@@ -15,6 +16,6 @@ export async function searchMovies(page = 1) {
   const validData = resultsData.filter(
     (movie) => movie.poster_path && movie.overview,
   );
-  console.log("🚀 ~ searchMovies ~ validData:", validData);
+  totalPagesFromSearch = searchData.total_pages;
   renderPreviewCards(validData);
 }

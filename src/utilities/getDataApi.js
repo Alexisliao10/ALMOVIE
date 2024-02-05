@@ -1,6 +1,7 @@
 import axios, { isCancel, AxiosError } from "axios";
 import API_KEY from "../apiKey.js";
 import { upcomingLayout } from "../pages/upcoming.js";
+import { searchMovies } from "../pages/searchView.js";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -59,7 +60,7 @@ export async function searchMoviesAPI(query, page) {
       page,
     },
   });
-  return data.results;
+  return data;
 }
 
 // functions
@@ -77,6 +78,6 @@ async function getGenreList() {
 
 // testing
 (async () => {
-  const res1 = await popularMovies;
+  const res1 = await searchMoviesAPI("avenger", 1);
   console.log("🚀 ~ res1:", res1);
 })();

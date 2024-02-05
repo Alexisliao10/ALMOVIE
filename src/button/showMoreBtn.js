@@ -1,8 +1,9 @@
 import * as node from "../utilities/nodes.js";
-
-if (logica) {
-  const showMoreBtn = document.createElement("button");
-  showMoreBtn.textContent = "Show more";
-  showMoreBtn.classList.add("mx-auto");
-  node.moviesContainer.append(showMoreBtn);
+import { totalPagesFromSearch } from "../pages/searchView.js";
+import { showMoreBtn } from "../utilities/nodes.js";
+export function checkTotalPage() {
+  if (true) {
+    showMoreBtn.classList.add("block");
+    showMoreBtn.classList.remove("hidden");
+  }
 }

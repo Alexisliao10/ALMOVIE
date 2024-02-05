@@ -44,3 +44,7 @@ export const overview = create("h2");
 export const movieOverview = create("p");
 export const director = create("h3");
 export const positionTitle = create("p");
+
+// buttons
+
+export const showMoreBtn = $("#showMoreBtn");

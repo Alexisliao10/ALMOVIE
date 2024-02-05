@@ -12,6 +12,8 @@ import { homeLayout } from "../pages/home.js";
 import { searchViewLayout, searchMovies } from "../pages/searchView.js";
 import { moviesLayout } from "../pages/movie.js";
 import { upcomingLayout } from "../pages/upcoming.js";
+import { checkTotalPage } from "../button/showMorebtn.js";
+
 const hashPages = {
   "#trends": trendsPage,
   "#search": searchPage,
@@ -44,6 +46,7 @@ function trendsPage() {
 function searchPage() {
   searchViewLayout();
   searchMovies();
+  checkTotalPage();
   console.log("searchPage");
 }
 
