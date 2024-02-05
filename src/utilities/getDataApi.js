@@ -77,7 +77,7 @@ async function getGenreList() {
 }
 
 // testing
-(async () => {
-  const res1 = await searchMoviesAPI("avenger", 1);
-  console.log("🚀 ~ res1:", res1);
-})();
+// (async () => {
+//   const res1 = await searchMoviesAPI("avenger", 1);
+//   console.log("🚀 ~ res1:", res1);
+// })();
