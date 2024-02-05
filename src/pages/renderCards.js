@@ -55,7 +55,6 @@ export default async function renderPreviewCards(apiData) {
       );
       movieInfoContainer.classList.add(
         "absolute",
-        "z-10",
         "opacity-0",
         "transition-all",
       );
@@ -96,7 +95,7 @@ export default async function renderPreviewCards(apiData) {
         "gap-1",
         "px-2",
       );
-      anchor.classList.add("cursor-pointer", "hover:text-azure");
+      anchor.classList.add("cursor-pointer", "hover:text-azure", "z-20");
       viewMore.classList.add("text-[11px]");
       viewMore.textContent = "View More...";
       movieRatingContainer.classList.add(
@@ -118,6 +117,7 @@ export default async function renderPreviewCards(apiData) {
       movieImg.classList.add(
         "relative",
         "w-full",
+        "z-10",
         "rounded-lg",
         "active:border-2",
         "active:border-sky-500",
