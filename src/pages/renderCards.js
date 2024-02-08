@@ -22,11 +22,11 @@ async function getGenreNames(apiData) {
 export let dataForViewMore = [];
 export default async function renderPreviewCards(apiData) {
   try {
-    node.articleContainer.innerHTML = "";
     const res = await apiData;
     dataForViewMore = [];
     dataForViewMore.push(res);
     const genreNames = await getGenreNames(res);
+    node.articleContainer.innerHTML = "";
 
     res.forEach((movie, i) => {
       // variables

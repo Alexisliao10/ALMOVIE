@@ -1,7 +1,9 @@
 import { navigate } from "./utilities/navigation.js";
 import * as nodes from "./utilities/nodes.js";
+import { mainLoadingSkeleton } from "./pages/loading.js";
 
 location.hash = "#home";
+mainLoadingSkeleton();
 
 window.addEventListener("load", navigate);
 window.addEventListener("hashchange", navigate);

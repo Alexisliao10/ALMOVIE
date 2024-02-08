@@ -61,6 +61,7 @@ function seriesPage() {
 
 function moviesPage() {
   moviesLayout();
+  mainLoadingSkeleton();
   renderPreviewCards(popularMovies);
   removeShowMoreBtn();
   console.log("movies");
