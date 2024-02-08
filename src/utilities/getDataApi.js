@@ -1,7 +1,5 @@
 import axios, { isCancel, AxiosError } from "axios";
 import API_KEY from "../apiKey.js";
-import { upcomingLayout } from "../pages/upcoming.js";
-import { searchMovies } from "../pages/searchView.js";
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
