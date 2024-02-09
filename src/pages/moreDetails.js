@@ -5,7 +5,7 @@ import {
   getMovieDetails,
 } from "../utilities/getDataApi.js";
 import * as nodes from "../utilities/nodes.js";
-import { getIdName, dataForViewMore } from "./renderCards.js";
+import { getIdName, dataForViewMore } from "../utilities/renderCards.js";
 
 export function moreDetailsLayout() {
   nodes.moreDetailsView.classList.remove("hidden");

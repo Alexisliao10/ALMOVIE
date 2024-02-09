@@ -1,4 +1,4 @@
-import renderPreviewCards from "../pages/renderCards.js";
+import renderPreviewCards from "./renderCards.js";
 import * as node from "./nodes.js";
 import {
   trendMovies,
@@ -33,10 +33,10 @@ export function navigate() {
   }
 }
 
-function homePage() {
+async function homePage() {
   homeLayout();
-  renderPreviewCards(trendMovies);
   removeShowMoreBtn();
+  await renderPreviewCards(trendMovies);
   console.log("home");
 }
 

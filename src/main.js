@@ -5,6 +5,10 @@ import { mainLoadingSkeleton } from "./pages/loading.js";
 location.hash = "#home";
 mainLoadingSkeleton();
 
+const lazyLoader = new IntersectionObserver((entries) => {
+  entries.forEach((element) => {});
+});
+
 window.addEventListener("load", navigate);
 window.addEventListener("hashchange", navigate);
 

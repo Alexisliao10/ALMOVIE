@@ -1,6 +1,6 @@
 import * as nodes from "../utilities/nodes.js";
 import { searchMoviesAPI, genreList } from "../utilities/getDataApi.js";
-import renderPreviewCards from "./renderCards.js";
+import renderPreviewCards from "../utilities/renderCards.js";
 
 export function searchViewLayout() {
   nodes.moviesContainerTitle.classList.add("hidden");
