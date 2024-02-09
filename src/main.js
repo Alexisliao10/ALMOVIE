@@ -5,8 +5,13 @@ import { mainLoadingSkeleton } from "./pages/loading.js";
 location.hash = "#home";
 mainLoadingSkeleton();
 
-const lazyLoader = new IntersectionObserver((entries) => {
-  entries.forEach((element) => {});
+export const lazyLoader = new IntersectionObserver((entries) => {
+  entries.forEach((element) => {
+    if (element.isIntersecting) {
+      const url = element.target.getAttribute("data-img");
+      element.target.setAttribute("src", url);
+    }
+  });
 });
 
 window.addEventListener("load", navigate);
