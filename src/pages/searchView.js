@@ -14,9 +14,6 @@ export async function searchMovies(page = 1) {
   const [_, query] = location.hash.split("=");
   const searchData = await searchMoviesAPI(query, page);
   const resultsData = searchData.results;
-  // const validData = resultsData.filter(
-  //   (movie) => movie.poster_path && movie.overview,
-  // );
   totalPagesFromSearch = [];
   totalPagesFromSearch.push(searchData.total_pages);
   renderPreviewCards(resultsData);
