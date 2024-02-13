@@ -21,7 +21,7 @@ async function getGenreNames(apiData) {
   return list;
 }
 export let dataForViewMore = [];
-export default async function renderPreviewCards(apiData, lazyLoad = false) {
+export default async function renderPreviewCards(apiData, lazyLoad = true) {
   try {
     const res = await apiData;
     dataForViewMore = [];

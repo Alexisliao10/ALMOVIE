@@ -36,7 +36,7 @@ export function navigate() {
 async function homePage() {
   homeLayout();
   removeShowMoreBtn();
-  await renderPreviewCards(trendMovies, true);
+  await renderPreviewCards(trendMovies);
   console.log("home");
 }
 
