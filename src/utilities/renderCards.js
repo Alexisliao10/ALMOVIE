@@ -152,6 +152,9 @@ export default async function renderPreviewCards(apiData, lazyLoad = true) {
         movieInfoContainer.classList.toggle("opacity-0");
         movieImg.classList.toggle("opacity-20");
       });
+      movieImg.addEventListener("error", () => {
+        movieImg.src = "../../public/assets/noImageAvailable.jpg";
+      });
       anchor.addEventListener("click", () => {
         location.hash = "#movie=" + movie.id + "-" + movie.title;
       });
