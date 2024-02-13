@@ -8,7 +8,7 @@ export function searchViewLayout() {
   nodes.moviesContainer.classList.remove("hidden");
 }
 
-export let totalPagesFromSearch = [];
+export let totalPagesFromSearch;
 
 export async function searchMovies(page = 1) {
   const [_, query] = location.hash.split("=");

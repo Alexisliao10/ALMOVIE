@@ -12,7 +12,6 @@ import { homeLayout } from "../pages/home.js";
 import { searchViewLayout, searchMovies } from "../pages/searchView.js";
 import { moviesLayout } from "../pages/movie.js";
 import { upcomingLayout } from "../pages/upcoming.js";
-import { checkTotalPage, removeShowMoreBtn } from "../button/showMorebtn.js";
 
 const hashPages = {
   "#trends": trendsPage,
@@ -35,42 +34,35 @@ export function navigate() {
 
 async function homePage() {
   homeLayout();
-  removeShowMoreBtn();
   await renderPreviewCards(trendMovies);
   console.log("home");
 }
 
 function trendsPage() {
-  removeShowMoreBtn();
   console.log("trends");
 }
 
 function searchPage() {
   searchViewLayout();
   searchMovies();
-  setTimeout(checkTotalPage, 500);
   console.log("searchPage");
 }
 
 function seriesPage() {
   putSeries();
   renderPreviewCards(trendSeries);
-  removeShowMoreBtn();
   console.log("series");
 }
 
 function moviesPage() {
   moviesLayout();
-  mainLoadingSkeleton();
   renderPreviewCards(popularMovies);
-  removeShowMoreBtn();
   console.log("movies");
 }
 
 function upcomingPage() {
   upcomingLayout();
   renderPreviewCards(upcomingMovies);
-  removeShowMoreBtn();
   console.log("upcoming");
 }
 
@@ -79,11 +71,9 @@ export function moviePreviewPage() {
   const [movieId] = movieInfo.split("-");
   moreDetailsLayout();
   if (hash) renderMoreDetails(movieId);
-  removeShowMoreBtn();
   console.log("movie preview");
 }
 
 function error404() {
-  removeShowMoreBtn();
   console.log("error");
 }

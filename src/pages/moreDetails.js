@@ -1,6 +1,5 @@
 import {
   getDirector,
-  trendMovies,
   genreList,
   getMovieDetails,
 } from "../utilities/getDataApi.js";
