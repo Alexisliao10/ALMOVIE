@@ -22,7 +22,6 @@ export function handleScroll() {
     currentPage <= totalPagesFromSearch[0]
   ) {
     infiniteScrollPages[hash]();
-    console.log("total page", totalPagesFromSearch[0]);
   }
 }
 let currentPage = 3;
@@ -43,8 +42,6 @@ function validateSearchChange() {
 window.addEventListener("hashchange", validateSearchChange);
 
 function searchInfinite() {
-  console.log("scroll from search");
-  console.log(currentPage);
   searchMovies(currentPage, false);
   if (currentPage <= totalPagesFromSearch) {
     currentPage++;

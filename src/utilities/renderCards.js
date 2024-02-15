@@ -156,8 +156,11 @@ export default async function renderPreviewCards(
 ) {
   try {
     const res = await apiData;
-    dataForViewMore = [];
-    dataForViewMore.push(res);
+    res.forEach((element) => {
+      if (!dataForViewMore.includes(element)) {
+        dataForViewMore.push(element);
+      }
+    });
     const genreNames = await getGenreNames(res);
     if (clean) {
       node.articleContainer.innerHTML = "";

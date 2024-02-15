@@ -12,11 +12,12 @@ export function moreDetailsLayout() {
   nodes.moviesContainer.classList.add("hidden");
 }
 export async function renderMoreDetails(id) {
+  const moviesInfo = dataForViewMore.flat();
   // reset
   nodes.moreDetailsView.innerHTML = "";
   // request
   const directorName = await getDirector(id);
-  const res = await dataForViewMore[0];
+  const res = moviesInfo;
   const [movieInfo] = res.filter((movie) => movie.id == id);
   const genreNames = getIdName(movieInfo.genre_ids, genreList).join(", ");
   const movieDetails = await getMovieDetails(id);
