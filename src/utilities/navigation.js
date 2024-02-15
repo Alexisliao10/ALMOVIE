@@ -34,7 +34,7 @@ export function navigate() {
 
 async function homePage() {
   homeLayout();
-  await renderPreviewCards(trendMovies);
+  renderPreviewCards(trendMovies);
   console.log("home");
 }
 
@@ -42,9 +42,16 @@ function trendsPage() {
   console.log("trends");
 }
 
+let inputSearchValue = undefined;
+
 function searchPage() {
+  console.log("🚀 ~ inputSearchValue:", inputSearchValue);
+  console.log(node.searchFormInput.value);
   searchViewLayout();
-  searchMovies();
+  if (inputSearchValue !== node.searchFormInput.value) {
+    inputSearchValue = node.searchFormInput.value;
+    searchMovies();
+  }
   console.log("searchPage");
 }
 

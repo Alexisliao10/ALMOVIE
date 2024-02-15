@@ -10,14 +10,13 @@ export function moreDetailsLayout() {
   nodes.moreDetailsView.classList.remove("hidden");
   nodes.inputContainer.classList.add("hidden");
   nodes.moviesContainer.classList.add("hidden");
-  nodes.divContainer.classList.remove("h-12");
 }
 export async function renderMoreDetails(id) {
   // reset
   nodes.moreDetailsView.innerHTML = "";
   // request
   const directorName = await getDirector(id);
-  const res = dataForViewMore[0];
+  const res = await dataForViewMore[0];
   const [movieInfo] = res.filter((movie) => movie.id == id);
   const genreNames = getIdName(movieInfo.genre_ids, genreList).join(", ");
   const movieDetails = await getMovieDetails(id);
@@ -73,7 +72,7 @@ export async function renderMoreDetails(id) {
   );
   nodes.releaseDate.textContent = movieInfo.release_date;
   nodes.separator.textContent = "|";
-  nodes.duration.textContent = duration(runtime).join(" "); // TODO
+  nodes.duration.textContent = duration(runtime).join(" ");
   nodes.ratingContainer.id = "movieRatingStart-infoSec";
   nodes.ratingContainer.classList.add(
     "absolute",
@@ -97,7 +96,7 @@ export async function renderMoreDetails(id) {
   nodes.overview.classList.add("mt-6", "font-sans", "text-xl", "font-bold");
   nodes.overview.textContent = "Overview";
   nodes.movieOverview.classList.add("mt-1", "text-base");
-  nodes.movieOverview.textContent = movieInfo.overview; // TODO
+  nodes.movieOverview.textContent = movieInfo.overview;
   nodes.director.classList.add("mt-9", "font-bold");
   nodes.director.textContent = directorName;
   nodes.positionTitle.classList.add("text-sm");
@@ -127,11 +126,3 @@ export async function renderMoreDetails(id) {
     nodes.overviewContainer,
   );
 }
-
-// backdrop img del trendMovies
-// movie title
-// release date, duration
-// genres
-// rating
-// overview
-// director done

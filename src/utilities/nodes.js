@@ -47,4 +47,20 @@ export const positionTitle = create("p");
 
 // buttons
 
-export const showMoreBtn = $("#showMoreBtn");
+export const showMoreBtn = document.createElement("button");
+showMoreBtn.id = "showMoreBtn";
+showMoreBtn.textContent = "Show More";
+showMoreBtn.classList.add(
+  "mx-auto",
+  "my-10",
+  "w-32",
+  "rounded-[25rem]",
+  "border-2",
+  "border-white",
+  "border-opacity-0",
+  "transition-opacity",
+  "bg-azure",
+  "py-2",
+  "hover:bg-blue-700",
+  "active:border-opacity-100",
+);

@@ -1,6 +1,7 @@
 import { navigate } from "./utilities/navigation.js";
 import * as nodes from "./utilities/nodes.js";
 import { mainLoadingSkeleton } from "./pages/loading.js";
+import { handleScroll } from "./utilities/infiniteScroll.js";
 
 location.hash = "#home";
 mainLoadingSkeleton();
@@ -14,8 +15,9 @@ export const lazyLoader = new IntersectionObserver((entries) => {
   });
 });
 
-window.addEventListener("load", navigate);
-window.addEventListener("hashchange", navigate);
+window.addEventListener("load", navigate, false);
+window.addEventListener("hashchange", navigate, false);
+window.addEventListener("scroll", handleScroll, { passive: false });
 
 nodes.hamMenu.addEventListener("click", toggleHamMenuView);
 function toggleHamMenuView() {

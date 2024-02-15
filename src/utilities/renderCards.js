@@ -1,6 +1,7 @@
 import * as node from "./nodes.js";
 import { genreList } from "./getDataApi.js";
 import { lazyLoader } from "../main.js";
+import { addShowMoreBtn, removeShowMoreBtn } from "../button/showMorebtn.js";
 export function getIdName(id, list) {
   const names = [];
   for (let i = 0; i < id.length; i++) {
@@ -148,9 +149,10 @@ function cardIterator(data, genreNames, lazyLoad) {
     }
   });
 }
+
 export default async function renderPreviewCards(
   apiData,
-  { lazyLoad = true, clean = true } = {},
+  { lazyLoad = true, clean = true, addBtn = false } = {},
 ) {
   try {
     const res = await apiData;
@@ -160,10 +162,17 @@ export default async function renderPreviewCards(
     if (clean) {
       node.articleContainer.innerHTML = "";
     }
+    if (document.getElementById("showMoreBtn")) {
+      removeShowMoreBtn();
+    }
 
     cardIterator(res, genreNames, lazyLoad);
 
-    if (clean) {
+    if (node.articleContainer.childElementCount === 20) {
+      addShowMoreBtn();
+    }
+
+    if (addBtn) {
       addShowMoreBtn();
     }
   } catch (error) {
