@@ -144,6 +144,9 @@ function cardIterator(data, genreNames, lazyLoad) {
     anchor.addEventListener("click", () => {
       location.hash = "#movie=" + movie.id + "-" + movie.title;
     });
+    movieCard.addEventListener("dblclick", () => {
+      location.hash = "#movie=" + movie.id + "-" + movie.title;
+    });
     if (lazyLoad) {
       lazyLoader.observe(movieImg);
     }
