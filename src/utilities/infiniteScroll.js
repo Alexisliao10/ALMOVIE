@@ -53,7 +53,6 @@ function searchInfinite() {
 function homeInfinite() {
   loadMoreTrending(currentPage);
   if (currentPage <= totalPagesFromHome) {
-    console.log("scroll from home");
     currentPage++;
   }
 }

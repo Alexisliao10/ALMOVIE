@@ -7,11 +7,12 @@ export function removeShowMoreBtn() {
 }
 
 export function addShowMoreBtn() {
-  node.moviesContainer.appendChild(node.showMoreBtn);
-  if (pageIdentifier()) {
+  if (pageIdentifier() === "home") {
+    node.moviesContainer.appendChild(node.showMoreBtn);
     node.showMoreBtn.removeEventListener("click", renderSearch);
     node.showMoreBtn.addEventListener("click", renderHome);
-  } else {
+  } else if (pageIdentifier() === "search") {
+    node.moviesContainer.appendChild(node.showMoreBtn);
     node.showMoreBtn.removeEventListener("click", renderHome);
     node.showMoreBtn.addEventListener("click", renderSearch);
   }
@@ -29,8 +30,8 @@ function renderHome() {
 
 function pageIdentifier() {
   if (location.hash === "#home") {
-    return true;
-  } else {
-    return false;
+    return "home";
+  } else if (location.hash.startsWith("#search")) {
+    return "search";
   }
 }
