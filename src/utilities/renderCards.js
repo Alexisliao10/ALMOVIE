@@ -114,7 +114,9 @@ function cardIterator(data, genreNames, lazyLoad) {
     );
     movieImg.setAttribute(
       lazyLoad ? "data-img" : "src",
-      `https://image.tmdb.org/t/p/w185${movie.poster_path}`,
+      movie.poster_path
+        ? `https://image.tmdb.org/t/p/w185${movie.poster_path}`
+        : "../../public/assets/noImageAvailable.jpg",
     );
     movieImg.alt = movie.title;
     movieImg.draggable = false;
@@ -137,9 +139,6 @@ function cardIterator(data, genreNames, lazyLoad) {
     movieCard.addEventListener("click", () => {
       movieInfoContainer.classList.toggle("opacity-0");
       movieImg.classList.toggle("opacity-20");
-    });
-    movieImg.addEventListener("error", () => {
-      movieImg.src = "../../public/assets/noImageAvailable.jpg";
     });
     anchor.addEventListener("click", () => {
       location.hash = "#movie=" + movie.id + "-" + movie.title;
