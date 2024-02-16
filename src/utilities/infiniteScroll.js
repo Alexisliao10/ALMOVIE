@@ -1,6 +1,7 @@
 import { searchMovies } from "../pages/searchView.js";
 import * as node from "./nodes.js";
 import { totalPagesFromSearch } from "../pages/searchView.js";
+import { loadMoreTrending, totalPagesFromHome } from "../pages/home.js";
 
 const infiniteScrollPages = {
   "#search": searchInfinite,
@@ -18,8 +19,7 @@ export function handleScroll() {
     infiniteScrollPages[hash] &&
     scrollIsBottom &&
     !document.getElementById("showMoreBtn") &&
-    node.articleContainer.childElementCount > 20 &&
-    currentPage <= totalPagesFromSearch[0]
+    node.articleContainer.childElementCount > 20
   ) {
     infiniteScrollPages[hash]();
   }
@@ -42,15 +42,18 @@ function validateSearchChange() {
 window.addEventListener("hashchange", validateSearchChange);
 
 function searchInfinite() {
-  searchMovies(currentPage, false);
+  if (currentPage <= totalPagesFromSearch[0]) {
+    searchMovies(currentPage, false);
+  }
   if (currentPage <= totalPagesFromSearch) {
     currentPage++;
   }
 }
 
 function homeInfinite() {
-  console.log("scroll from home");
-  if (currentPage <= totalPagesFromSearch) {
+  loadMoreTrending(currentPage);
+  if (currentPage <= totalPagesFromHome) {
+    console.log("scroll from home");
     currentPage++;
   }
 }

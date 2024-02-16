@@ -2,6 +2,8 @@ import * as node from "../utilities/nodes.js";
 import { trendMoviesByPage } from "../utilities/getDataApi.js";
 import renderPreviewCards from "../utilities/renderCards.js";
 
+export let totalPagesFromHome;
+
 export function homeLayout() {
   node.moviesContainer.classList.remove("hidden");
   node.moviesContainerTitle.classList.remove("hidden");
@@ -14,5 +16,7 @@ export function homeLayout() {
 export async function loadMoreTrending(page) {
   const resByPage = await trendMoviesByPage(page);
   const data = resByPage.results;
+  totalPagesFromHome = [];
+  totalPagesFromHome.push(resByPage.total_pages);
   renderPreviewCards(data, { clean: false });
 }
