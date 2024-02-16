@@ -152,7 +152,7 @@ function cardIterator(data, genreNames, lazyLoad) {
 
 export default async function renderPreviewCards(
   apiData,
-  { lazyLoad = true, clean = true, addBtn = false } = {},
+  { lazyLoad = true, clean = true } = {},
 ) {
   try {
     const res = await apiData;
@@ -173,10 +173,7 @@ export default async function renderPreviewCards(
 
     if (node.articleContainer.childElementCount === 20) {
       addShowMoreBtn();
-    }
-
-    if (addBtn) {
-      addShowMoreBtn();
+      return;
     }
   } catch (error) {
     throw new Error(error.message);

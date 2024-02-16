@@ -17,9 +17,5 @@ export async function searchMovies(page = 1, clean) {
   const resultsData = searchData.results;
   totalPagesFromSearch = [];
   totalPagesFromSearch.push(searchData.total_pages);
-  let addBtn = false;
-  if (searchData.total_pages > 1 && page === 1) {
-    addBtn = true;
-  }
-  renderPreviewCards(resultsData, { clean: clean, addBtn: addBtn });
+  renderPreviewCards(resultsData, { clean: clean });
 }

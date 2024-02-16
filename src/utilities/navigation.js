@@ -45,7 +45,6 @@ function trendsPage() {
 let inputSearchValue = undefined;
 
 function searchPage() {
-  console.log(node.searchFormInput.value);
   searchViewLayout();
   if (inputSearchValue !== node.searchFormInput.value) {
     inputSearchValue = node.searchFormInput.value;

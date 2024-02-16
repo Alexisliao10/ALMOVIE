@@ -26,6 +26,14 @@ export async function getApiData(url, entry = null) {
 
 // trends
 export const trendMovies = getApiData("trending/movie/day", "results");
+export const trendMoviesByPage = async (page) => {
+  const { data } = await api("trending/movie/day", {
+    params: {
+      page,
+    },
+  });
+  return data;
+};
 export const trendSeries = getApiData("trending/tv/day", "results");
 // popular
 export const popularMovies = getApiData("movie/popular", "results");
