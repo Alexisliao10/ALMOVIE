@@ -88,7 +88,7 @@ function cardIterator(data, genreNames, lazyLoad) {
       "px-2",
     );
     anchor.classList.add("cursor-pointer", "hover:text-azure", "z-20");
-    viewMore.classList.add("text-[11px]");
+    viewMore.classList.add("text-[14px]");
     viewMore.textContent = "View More...";
     movieRatingContainer.classList.add("flex", "items-center", "gap-1", "z-20");
     rating.classList.add("rating", "text-sm");
