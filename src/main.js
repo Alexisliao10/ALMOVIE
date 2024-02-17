@@ -1,4 +1,3 @@
-import { navigate } from "./utilities/navigation.js";
 import * as nodes from "./utilities/nodes.js";
 import { mainLoadingSkeleton } from "./pages/loading.js";
 import { handleScroll } from "./utilities/infiniteScroll.js";
@@ -15,8 +14,6 @@ export const lazyLoader = new IntersectionObserver((entries) => {
   });
 });
 
-window.addEventListener("load", navigate, false);
-window.addEventListener("hashchange", navigate, false);
 window.addEventListener("scroll", handleScroll, { passive: false });
 
 nodes.hamMenu.addEventListener("click", toggleHamMenuView);
@@ -47,6 +44,7 @@ nodes.navSeries.addEventListener("click", closeHamMenu);
 nodes.navMovies.addEventListener("click", closeHamMenu);
 nodes.navNewRelease.addEventListener("click", closeHamMenu);
 nodes.searchBtn.addEventListener("click", addSearchLocation);
+
 nodes.searchFormInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     addSearchLocation();

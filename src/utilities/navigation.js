@@ -13,6 +13,12 @@ import { searchViewLayout, searchMovies } from "../pages/searchView.js";
 import { moviesLayout } from "../pages/movie.js";
 import { upcomingLayout } from "../pages/upcoming.js";
 
+setTimeout(() => {
+  navigate();
+}, 300);
+
+window.addEventListener("hashchange", navigate, false);
+
 const hashPages = {
   "#trends": trendsPage,
   "#search": searchPage,
@@ -23,7 +29,7 @@ const hashPages = {
   "#error404": error404,
 };
 
-export function navigate() {
+function navigate() {
   const [hash] = location.hash.split("=");
   if (hashPages[hash]) {
     hashPages[hash]();
@@ -32,7 +38,7 @@ export function navigate() {
   }
 }
 
-async function homePage() {
+function homePage() {
   homeLayout();
   renderPreviewCards(trendMovies);
   console.log("home");
