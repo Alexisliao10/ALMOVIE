@@ -17,7 +17,6 @@ export async function searchMovies(page = 1, clean) {
   const resultsData = searchData.results.sort(
     (a, b) => b.popularity - a.popularity,
   );
-  console.log("🚀 ~ searchMovies ~ resultsData:", resultsData);
   totalPagesFromSearch = [];
   totalPagesFromSearch.push(searchData.total_pages);
   renderPreviewCards(resultsData, { clean: clean });

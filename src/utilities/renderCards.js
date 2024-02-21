@@ -1,7 +1,7 @@
 import * as node from "./nodes.js";
 import { genreList } from "./getDataApi.js";
 import { lazyLoader } from "../main.js";
-import { addShowMoreBtn, removeShowMoreBtn } from "../button/showMorebtn.js";
+import { addShowMoreBtn, removeShowMoreBtn } from "../buttons/showMorebtn.js";
 export function getIdName(id, list) {
   const names = [];
   for (let i = 0; i < id.length; i++) {
@@ -54,7 +54,6 @@ function cardIterator(data, genreNames, lazyLoad) {
       "mt-2",
       "line-clamp-10",
       "max-h-40",
-      "text-ellipsis",
       "px-2",
       "text-start",
       "text-xs",
@@ -175,7 +174,6 @@ export default async function renderPreviewCards(
 
     if (node.articleContainer.childElementCount === 20) {
       addShowMoreBtn();
-      return;
     }
   } catch (error) {
     throw new Error(error.message);
