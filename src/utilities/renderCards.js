@@ -49,7 +49,12 @@ function cardIterator(data, genreNames, lazyLoad) {
       "cursor-pointer",
       "select-none",
     );
-    movieInfoContainer.classList.add("absolute", "opacity-0", "transition-all");
+    movieInfoContainer.classList.add(
+      "absolute",
+      "opacity-0",
+      "transition-all",
+      "duration-300",
+    );
     movieOverview.classList.add(
       "mt-2",
       "line-clamp-10",
@@ -134,10 +139,19 @@ function cardIterator(data, genreNames, lazyLoad) {
 
     // main movie container
     node.articleContainer.append(movieCard);
-    // function
+
+    // functions
     movieCard.addEventListener("click", () => {
       movieInfoContainer.classList.toggle("opacity-0");
       movieImg.classList.toggle("opacity-20");
+    });
+    movieCard.addEventListener("mouseenter", () => {
+      movieInfoContainer.classList.remove("opacity-0");
+      movieImg.classList.add("opacity-20");
+    });
+    movieCard.addEventListener("mouseleave", () => {
+      movieInfoContainer.classList.add("opacity");
+      movieImg.classList.remove("opacity-20");
     });
     anchor.addEventListener("click", () => {
       location.hash = "#movie=" + movie.id + "-" + movie.title;
