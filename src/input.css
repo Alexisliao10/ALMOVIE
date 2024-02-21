@@ -43,16 +43,3 @@
   color: #057aff;
   background-size: 100% 3px;
 }
-
-.skeleton {
-  animation: skeleton-loading 1s linear infinite alternate;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: rgba(107, 114, 128, 0.25);
-  }
-  100% {
-    background-color: rgb(107, 114, 128);
-  }
-}
