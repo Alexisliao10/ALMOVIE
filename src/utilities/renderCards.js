@@ -150,7 +150,7 @@ function cardIterator(data, genreNames, lazyLoad) {
       movieImg.classList.add("opacity-20");
     });
     movieCard.addEventListener("mouseleave", () => {
-      movieInfoContainer.classList.add("opacity");
+      movieInfoContainer.classList.add("opacity-0");
       movieImg.classList.remove("opacity-20");
     });
     anchor.addEventListener("click", () => {
