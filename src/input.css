@@ -43,3 +43,35 @@
   color: #057aff;
   background-size: 100% 3px;
 }
+
+@media (min-width: 1024px) {
+  .grid-desktop {
+    display: grid;
+    grid-template-columns: 150px 40px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "aside - hero"
+      "aside - cards";
+  }
+
+  .aside {
+    grid-area: aside;
+  }
+
+  .hero {
+    grid-area: hero;
+  }
+
+  .cards {
+    grid-area: cards;
+  }
+}
+
+.shadow-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 500px;
+  box-shadow: 0px -200px 110px 0px rgba(0, 0, 0, 0.7) inset;
+}

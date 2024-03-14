@@ -115,6 +115,8 @@ function cardIterator(data, genreNames, lazyLoad) {
       "active:border-sky-500",
       "select-none",
       "aspect-[13/20]",
+      "hover:border-2",
+      "hover:border-sky-500",
     );
     movieImg.setAttribute(
       lazyLoad ? "data-img" : "src",
