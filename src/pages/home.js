@@ -20,3 +20,5 @@ export async function loadMoreTrending(page) {
   totalPagesFromHome.push(resByPage.total_pages);
   renderPreviewCards(data, { clean: false });
 }
+
+async function renderHero() {}
