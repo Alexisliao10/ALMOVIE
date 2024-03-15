@@ -68,8 +68,8 @@ export async function searchMoviesAPI(query, page) {
   });
   return data;
 }
-
 // discoverMovie
+export const getDiscoverMovies = getApiData("discover/movie", "results");
 
 // functions
 
@@ -84,7 +84,7 @@ async function getGenreList() {
   return uniqueId;
 }
 
-(async () => {
-  const res1 = await searchMoviesAPI("avenger", 1);
-  console.log("🚀 ~ res1:", res1);
-})();
+// (async () => {
+//   const res1 = await getDiscoverMovies;
+//   console.log("🚀 ~ res1:", res1);
+// })();

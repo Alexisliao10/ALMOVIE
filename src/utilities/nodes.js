@@ -20,6 +20,14 @@ export const searchFormInput = $("#searchBar");
 export const searchBtn = $("main > div > div > i");
 export const sectionTrending = $("main > section");
 export const sectionTitle = $("main > section > h1");
+export const heroContainer = $("#hero-lg");
+export const heroInfoContainer = $("#hero-lg > div");
+export const heroTitle = $("#hero-lg > div > h1");
+export const heroInfo = $("#hero-lg > div > p");
+export const heroImgContainer = $("#hero-lg > figure");
+export const heroImg = $("#hero-lg > figure > img");
+export const heroButtonLeft = $("#hero-lg > .fa-angle-left");
+export const heroButtonsRight = $("#hero-lg > .fa-angle-right");
 
 // section more details
 export const moreDetailsView = $("#moreDetails");

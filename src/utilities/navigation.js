@@ -8,7 +8,7 @@ import {
 } from "../utilities/getDataApi.js";
 import { putSeries } from "../pages/series.js";
 import { moreDetailsLayout, renderMoreDetails } from "../pages/moreDetails.js";
-import { homeLayout } from "../pages/home.js";
+import { homeLayout, renderHero } from "../pages/home.js";
 import { searchViewLayout, searchMovies } from "../pages/searchView.js";
 import { moviesLayout } from "../pages/movie.js";
 import { upcomingLayout } from "../pages/upcoming.js";
@@ -40,6 +40,7 @@ function navigate() {
 
 function homePage() {
   homeLayout();
+  renderHero(0);
   renderPreviewCards(trendMovies);
   console.log("home");
 }
