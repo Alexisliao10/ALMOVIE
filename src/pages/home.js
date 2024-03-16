@@ -2,7 +2,6 @@ import * as node from "../utilities/nodes.js";
 import { trendMoviesByPage } from "../utilities/getDataApi.js";
 import renderPreviewCards from "../utilities/renderCards.js";
 import { getDiscoverMovies } from "../utilities/getDataApi.js";
-import { renderMoreDetails } from "./moreDetails.js";
 
 export let totalPagesFromHome;
 
@@ -13,18 +12,47 @@ export function homeLayout() {
   node.inputContainer.classList.remove("hidden");
   node.divContainer.classList.add("h-12");
   node.sectionTitle.textContent = "Trending Movies";
+  node.heroContainer.classList.remove("lg:hidden");
+  node.asideContainer.classList.remove("lg:hidden");
 }
 
 export async function renderHero(page) {
   const res = await getDiscoverMovies;
   const slicedRes = res.slice(0, 10);
   const movie = slicedRes[page];
+  const heroInfoContainer = document.createElement("div");
+  const heroTitle = document.createElement("h1");
+  const heroInfo = document.createElement("p");
+  // reset
+  const prevHeroInfoContainer = document.querySelector("#hero-lg > div");
+  if (prevHeroInfoContainer) {
+    node.heroContainer.removeChild(prevHeroInfoContainer);
+  }
+  //classList
+  heroInfoContainer.classList.add(
+    "absolute",
+    "bottom-6",
+    "z-10",
+    "px-12",
+    "hover:cursor-pointer",
+  );
+  heroTitle.classList.add(
+    "font-sans",
+    "text-4xl",
+    "font-black",
+    "hover:text-azure/[0.9]",
+  );
+  heroInfo.classList.add("mt-3", "line-clamp-5", "w-[450px]", "font-serif");
 
-  node.heroTitle.textContent = movie.title;
-  node.heroInfo.textContent = movie.overview;
+  heroTitle.textContent = movie.title;
+  heroInfo.textContent = movie.overview;
   node.heroImg.src = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`;
 
-  node.heroInfoContainer.addEventListener("click", () => {
+  //appends
+  heroInfoContainer.append(heroTitle, heroInfo);
+  node.heroContainer.insertBefore(heroInfoContainer, node.heroButtonLeft);
+
+  heroInfoContainer.addEventListener("click", () => {
     location.hash = "#movie=" + movie.id + "-" + movie.title;
   });
 }
@@ -68,3 +96,14 @@ function movieCarrousel(direction = "next") {
 }
 
 const myInterval = setInterval(movieCarrousel, 6000);
+
+node.inputContainer.addEventListener("click", (event) => {
+  if (!event.target.classList.contains("searchFormInput")) {
+    node.searchFormInput.classList.toggle("lg:hidden");
+    node.searchLabel.classList.toggle("lg:inline");
+  }
+});
+
+node.searchFormInput.addEventListener("click", (event) => {
+  event.stopPropagation();
+});

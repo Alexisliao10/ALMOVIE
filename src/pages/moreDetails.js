@@ -62,7 +62,13 @@ export async function renderMoreDetails(id) {
     "font-black",
   );
   nodes.movieTitle.textContent = movieInfo.title;
-  nodes.infoContainer.classList.add("bg-secondary-color-b", "py-2", "text-sm");
+  nodes.infoContainer.classList.add(
+    "bg-secondary-color-b",
+    "py-2",
+    "text-sm",
+    "lg:h-[80px]",
+    "lg:py-4",
+  );
   nodes.timeContainer.classList.add(
     "relative",
     "m-[0_auto]",
