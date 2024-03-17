@@ -21,8 +21,6 @@ async function getGenreNames(apiData) {
   });
   return list;
 }
-export let dataForViewMore = [];
-
 function cardIterator(data, genreNames, lazyLoad) {
   data.forEach((movie, i) => {
     // variables
@@ -173,11 +171,6 @@ export default async function renderPreviewCards(
 ) {
   try {
     const res = await apiData;
-    res.forEach((element) => {
-      if (!dataForViewMore.includes(element)) {
-        dataForViewMore.push(element);
-      }
-    });
     const genreNames = await getGenreNames(res);
     if (clean) {
       node.articleContainer.innerHTML = "";

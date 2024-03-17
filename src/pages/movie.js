@@ -7,4 +7,5 @@ export function moviesLayout() {
   node.inputContainer.classList.remove("hidden");
   node.divContainer.classList.add("h-12");
   node.sectionTitle.textContent = "Popular Movies";
+  node.heroContainer.classList.add("lg:hidden");
 }

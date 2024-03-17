@@ -7,6 +7,7 @@ export function searchViewLayout() {
   nodes.moreDetailsView.innerHTML = "";
   nodes.inputContainer.classList.remove("hidden");
   nodes.moviesContainer.classList.remove("hidden");
+  nodes.heroContainer.classList.add("lg:hidden");
 }
 
 export let totalPagesFromSearch;

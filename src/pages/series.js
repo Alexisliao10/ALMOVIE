@@ -5,4 +5,5 @@ export function putSeries() {
   nodes.moviesContainerTitle.classList.remove("hidden");
   nodes.moreDetailsView.innerHTML = "";
   nodes.moviesContainer.classList.remove("hidden");
+  nodes.heroContainer.classList.add("lg:hidden");
 }

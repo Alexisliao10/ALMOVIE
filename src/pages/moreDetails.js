@@ -2,26 +2,39 @@ import {
   getDirector,
   genreList,
   getMovieDetails,
+  getSeriesDetails,
 } from "../utilities/getDataApi.js";
 import * as nodes from "../utilities/nodes.js";
-import { getIdName, dataForViewMore } from "../utilities/renderCards.js";
+import { getIdName } from "../utilities/renderCards.js";
 
 export function moreDetailsLayout() {
   nodes.moreDetailsView.classList.remove("hidden");
   nodes.inputContainer.classList.add("hidden");
   nodes.moviesContainer.classList.add("hidden");
+  nodes.asideContainer.classList.add("lg:hidden");
+  nodes.heroContainer.classList.add("lg:hidden");
 }
 export async function renderMoreDetails(id) {
-  const moviesInfo = dataForViewMore.flat();
+  // const moviesInfo = dataForViewMore.flat();
+  const windowWidth = window.innerWidth;
   // reset
   nodes.moreDetailsView.innerHTML = "";
   // request
+  let renderDetails;
+
+  try {
+    const details = await getMovieDetails(id);
+    renderDetails = details;
+  } catch (error) {}
+  try {
+    const details = await getSeriesDetails(id);
+    renderDetails = details;
+  } catch (error) {}
+
+  const genresIDList = renderDetails.genres.map((item) => item.id);
   const directorName = await getDirector(id);
-  const res = moviesInfo;
-  const [movieInfo] = res.filter((movie) => movie.id == id);
-  const genreNames = getIdName(movieInfo.genre_ids, genreList).join(", ");
-  const movieDetails = await getMovieDetails(id);
-  const runtime = movieDetails.runtime;
+  const genreNames = getIdName(genresIDList, genreList).join(", "); // solo recibe un array
+  const runtime = renderDetails.runtime;
   const duration = (minutes) => {
     let duration = [];
     if (minutes >= 60) {
@@ -35,7 +48,13 @@ export async function renderMoreDetails(id) {
     return duration;
   };
   // classlist / attribute
-  nodes.backBtnContainer.classList.add("my-4", "px-5");
+  nodes.backBtnContainer.classList.add(
+    "my-4",
+    "px-5",
+    "lg:absolute",
+    "lg:top-[115px]",
+    "lg:left-[135px]",
+  );
   nodes.anchor.onclick = function () {
     history.back();
   };
@@ -44,15 +63,18 @@ export async function renderMoreDetails(id) {
     "fa-arrow-left",
     "fa-xl",
     "text-white",
+    "hover:text-azure",
     "hover:cursor-pointer",
+    "lg:text-[30px]",
   );
   nodes.backdropImg.classList.add(
     "h-[240px]",
     "w-full",
     "bg-cover",
     "bg-center",
+    "lg:h-auto",
   );
-  nodes.backdropImg.src = `https://image.tmdb.org/t/p/w780/${movieInfo.backdrop_path}`;
+  nodes.backdropImg.src = `https://image.tmdb.org/t/p/w780/${renderDetails.backdrop_path}`;
   nodes.movieTitle.classList.add(
     "my-4",
     "flex",
@@ -61,7 +83,7 @@ export async function renderMoreDetails(id) {
     "text-[22px]",
     "font-black",
   );
-  nodes.movieTitle.textContent = movieInfo.title;
+  nodes.movieTitle.textContent = renderDetails.title;
   nodes.infoContainer.classList.add(
     "bg-secondary-color-b",
     "py-2",
@@ -76,10 +98,17 @@ export async function renderMoreDetails(id) {
     "w-40",
     "justify-center",
     "gap-2",
+    "lg:w-[500px]",
   );
-  nodes.releaseDate.textContent = movieInfo.release_date;
+  nodes.releaseDate.textContent =
+    !windowWidth > 1024
+      ? renderDetails.release_date
+      : `Release date: ${renderDetails.release_date}`;
   nodes.separator.textContent = "|";
-  nodes.duration.textContent = duration(runtime).join(" ");
+  nodes.duration.textContent =
+    !windowWidth > 1024
+      ? duration(runtime).join(" ")
+      : `Duration: ${duration(runtime).join(" ")}`;
   nodes.ratingContainer.id = "movieRatingStart-infoSec";
   nodes.ratingContainer.classList.add(
     "absolute",
@@ -89,21 +118,28 @@ export async function renderMoreDetails(id) {
     "items-center",
     "gap-2",
   );
-  nodes.ratingScore.classList.add("rating", "text-l");
-  nodes.ratingScore.textContent = movieInfo.vote_average.toFixed(1);
+  nodes.ratingScore.classList.add("rating", "text-l", "lg:text-[20px]");
+  nodes.ratingScore.textContent = renderDetails.vote_average.toFixed(1);
   nodes.ratingIcon.classList.add(
     "fa-solid",
     "fa-star",
     "fa-md",
     "text-amber-500",
+    "lg:text-[20px]",
   );
-  nodes.genreContainer.classList.add("flex", "justify-center", "gap-2");
-  nodes.genreContainer.textContent = genreNames;
+  nodes.genreContainer.classList.add(
+    "flex",
+    "justify-center",
+    "gap-2",
+    "lg:mt-2",
+  );
+  nodes.genreContainer.textContent =
+    !windowWidth > 1024 ? genreNames : `Genres: ${genreNames}`;
   nodes.overviewContainer.classList.add("px-5");
   nodes.overview.classList.add("mt-6", "font-sans", "text-xl", "font-bold");
   nodes.overview.textContent = "Overview";
   nodes.movieOverview.classList.add("mt-1", "text-base");
-  nodes.movieOverview.textContent = movieInfo.overview;
+  nodes.movieOverview.textContent = renderDetails.overview;
   nodes.director.classList.add("mt-9", "font-bold");
   nodes.director.textContent = directorName;
   nodes.positionTitle.classList.add("text-sm");

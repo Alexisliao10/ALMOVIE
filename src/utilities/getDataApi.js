@@ -58,6 +58,10 @@ export async function getMovieDetails(id) {
   const res = await getApiData(`movie/${id}`);
   return res;
 }
+export async function getSeriesDetails(id) {
+  const res = await getApiData(`tv/${id}`);
+  return res;
+}
 // searchMovie
 export async function searchMoviesAPI(query, page) {
   const { data } = await api("search/movie", {
@@ -84,7 +88,17 @@ async function getGenreList() {
   return uniqueId;
 }
 
-// (async () => {
-//   const res1 = await getDiscoverMovies;
-//   console.log("🚀 ~ res1:", res1);
-// })();
+// export async function homeCombinedAPI() {
+//   const trendMoviesRes = await trendMovies;
+//   const discoverMoviesRes = await getDiscoverMovies;
+//   const combinedArr = [...discoverMoviesRes, ...trendMoviesRes];
+//   const filtererMovies = combinedArr.filter(
+//     (item, index, self) => index === self.findIndex((t) => t.id === item.id),
+//   );
+//   return filtererMovies.slice(0, 20);
+// }
+
+(async () => {
+  const res1 = await getSeriesDetails(126308);
+  console.log("🚀 ~ res1:", res1);
+})();

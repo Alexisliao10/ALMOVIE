@@ -1,5 +1,5 @@
 import * as node from "../utilities/nodes.js";
-import { trendMoviesByPage } from "../utilities/getDataApi.js";
+import { trendMovies, trendMoviesByPage } from "../utilities/getDataApi.js";
 import renderPreviewCards from "../utilities/renderCards.js";
 import { getDiscoverMovies } from "../utilities/getDataApi.js";
 
@@ -19,7 +19,8 @@ export function homeLayout() {
 export async function renderHero(page) {
   const res = await getDiscoverMovies;
   const slicedRes = res.slice(0, 10);
-  const movie = slicedRes[page];
+
+  const movies = slicedRes[page];
   const heroInfoContainer = document.createElement("div");
   const heroTitle = document.createElement("h1");
   const heroInfo = document.createElement("p");
@@ -44,16 +45,15 @@ export async function renderHero(page) {
   );
   heroInfo.classList.add("mt-3", "line-clamp-5", "w-[450px]", "font-serif");
 
-  heroTitle.textContent = movie.title;
-  heroInfo.textContent = movie.overview;
-  node.heroImg.src = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`;
-
-  //appends
+  heroTitle.textContent = movies.title;
+  heroInfo.textContent = movies.overview;
+  node.heroImg.src = `https://image.tmdb.org/t/p/w780${movies.backdrop_path}`;
+  node.heroImg.alt = movies.title;
   heroInfoContainer.append(heroTitle, heroInfo);
   node.heroContainer.insertBefore(heroInfoContainer, node.heroButtonLeft);
 
   heroInfoContainer.addEventListener("click", () => {
-    location.hash = "#movie=" + movie.id + "-" + movie.title;
+    location.hash = "#movie=" + movies.id + "-" + movies.title;
   });
 }
 
