@@ -88,17 +88,7 @@ async function getGenreList() {
   return uniqueId;
 }
 
-// export async function homeCombinedAPI() {
-//   const trendMoviesRes = await trendMovies;
-//   const discoverMoviesRes = await getDiscoverMovies;
-//   const combinedArr = [...discoverMoviesRes, ...trendMoviesRes];
-//   const filtererMovies = combinedArr.filter(
-//     (item, index, self) => index === self.findIndex((t) => t.id === item.id),
-//   );
-//   return filtererMovies.slice(0, 20);
-// }
-
-(async () => {
-  const res1 = await getSeriesDetails(126308);
-  console.log("🚀 ~ res1:", res1);
-})();
+// (async () => {
+//   const res1 = await getSeriesDetails(126308);
+//   console.log("🚀 ~ res1:", res1);
+// })();

@@ -35,13 +35,17 @@ export async function renderHero(page) {
     "bottom-6",
     "z-10",
     "px-12",
+    "opacity-0",
     "hover:cursor-pointer",
+    "transition-all",
+    "fade-in",
   );
   heroTitle.classList.add(
     "font-sans",
     "text-4xl",
     "font-black",
     "hover:text-azure/[0.9]",
+    "fancy-link",
   );
   heroInfo.classList.add("mt-3", "line-clamp-5", "w-[450px]", "font-serif");
 
