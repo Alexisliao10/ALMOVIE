@@ -13,6 +13,7 @@ export function moreDetailsLayout() {
   nodes.moviesContainer.classList.add("hidden");
   nodes.asideContainer.classList.add("lg:hidden");
   nodes.heroContainer.classList.add("lg:hidden");
+  nodes.sectionTitle.classList.add("lg:hidden");
 }
 export async function renderMoreDetails(id) {
   // const moviesInfo = dataForViewMore.flat();

@@ -5,6 +5,7 @@ import {
   trendSeries,
   popularMovies,
   upcomingMovies,
+  getMoviesByGenre,
 } from "../utilities/getDataApi.js";
 import { putSeries } from "../pages/series.js";
 import { moreDetailsLayout, renderMoreDetails } from "../pages/moreDetails.js";
@@ -12,6 +13,7 @@ import { homeLayout, renderHero } from "../pages/home.js";
 import { searchViewLayout, searchMovies } from "../pages/searchView.js";
 import { moviesLayout } from "../pages/movie.js";
 import { upcomingLayout } from "../pages/upcoming.js";
+import { categoryLayout } from "../pages/category.js";
 
 setTimeout(() => {
   navigate();
@@ -27,6 +29,7 @@ const hashPages = {
   "#newRelease": upcomingPage,
   "#movie": moviePreviewPage,
   "#error404": error404,
+  "#category": category,
 };
 
 function navigate() {
@@ -40,7 +43,7 @@ function navigate() {
 
 function homePage() {
   homeLayout();
-  renderHero(0);
+  // renderHero(0);
   renderPreviewCards(trendMovies);
   console.log("home");
 }
@@ -88,4 +91,15 @@ export function moviePreviewPage() {
 
 function error404() {
   console.log("error");
+}
+
+async function category() {
+  const [_, category] = location.hash.split("=");
+  const [categoryName, categoryId] = category.split("-");
+
+  const moviesByGenre = await getMoviesByGenre(categoryId);
+
+  categoryLayout(categoryName);
+  renderPreviewCards(moviesByGenre.results);
+  console.log("category");
 }

@@ -1,6 +1,7 @@
 import * as nodes from "./utilities/nodes.js";
 import { mainLoadingSkeleton } from "./pages/loading.js";
 import { handleScroll } from "./utilities/infiniteScroll.js";
+import "./pages/aside.js";
 
 location.hash = "#home";
 mainLoadingSkeleton();

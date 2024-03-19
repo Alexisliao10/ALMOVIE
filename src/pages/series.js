@@ -6,4 +6,5 @@ export function putSeries() {
   nodes.moreDetailsView.innerHTML = "";
   nodes.moviesContainer.classList.remove("hidden");
   nodes.heroContainer.classList.add("lg:hidden");
+  nodes.sectionTitle.classList.add("lg:hidden");
 }

@@ -8,6 +8,7 @@ export function searchViewLayout() {
   nodes.inputContainer.classList.remove("hidden");
   nodes.moviesContainer.classList.remove("hidden");
   nodes.heroContainer.classList.add("lg:hidden");
+  nodes.sectionTitle.classList.add("lg:hidden");
 }
 
 export let totalPagesFromSearch;

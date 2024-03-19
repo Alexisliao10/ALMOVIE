@@ -30,6 +30,7 @@ export const heroImg = $("#hero-lg > figure > img");
 export const heroButtonLeft = $("#hero-lg > .fa-angle-left");
 export const heroButtonsRight = $("#hero-lg > .fa-angle-right");
 export const asideContainer = $("main > aside");
+export const asideUlWrapper = $("main > aside > ul");
 
 // section more details
 export const moreDetailsView = $("#moreDetails");

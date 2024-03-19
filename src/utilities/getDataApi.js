@@ -74,6 +74,14 @@ export async function searchMoviesAPI(query, page) {
 }
 // discoverMovie
 export const getDiscoverMovies = getApiData("discover/movie", "results");
+export const getMoviesByGenre = async (id) => {
+  const { data } = await api("discover/movie", {
+    params: {
+      with_genres: id,
+    },
+  });
+  return data;
+};
 
 // functions
 
@@ -89,6 +97,6 @@ async function getGenreList() {
 }
 
 // (async () => {
-//   const res1 = await getSeriesDetails(126308);
+//   const res1 = await getMoviesByGenre(28);
 //   console.log("🚀 ~ res1:", res1);
 // })();

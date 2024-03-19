@@ -1,18 +1,19 @@
 import * as node from "../utilities/nodes.js";
-import { trendMovies, trendMoviesByPage } from "../utilities/getDataApi.js";
+import { trendMoviesByPage } from "../utilities/getDataApi.js";
 import renderPreviewCards from "../utilities/renderCards.js";
 import { getDiscoverMovies } from "../utilities/getDataApi.js";
 
 export let totalPagesFromHome;
 
 export function homeLayout() {
+  node.heroContainer.classList.remove("lg:hidden");
   node.moviesContainer.classList.remove("hidden");
   node.moviesContainerTitle.classList.remove("hidden");
   node.moreDetailsView.classList.add("hidden");
   node.inputContainer.classList.remove("hidden");
   node.divContainer.classList.add("h-12");
   node.sectionTitle.textContent = "Trending Movies";
-  node.heroContainer.classList.remove("lg:hidden");
+  node.sectionTitle.classList.add("lg:hidden");
   node.asideContainer.classList.remove("lg:hidden");
 }
 
@@ -61,6 +62,7 @@ export async function renderHero(page) {
   });
 }
 
+renderHero(0);
 export async function loadMoreTrending(page) {
   const resByPage = await trendMoviesByPage(page);
   const data = resByPage.results;
