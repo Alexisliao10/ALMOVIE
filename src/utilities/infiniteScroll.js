@@ -15,13 +15,19 @@ export function handleScroll() {
     document.documentElement.scrollHeight - 15;
 
   const [hash] = location.hash.split("=");
+
+  const hasInfiniteScrollPage = infiniteScrollPages[hash];
+  const isScrollBottom = scrollIsBottom;
+  const hasShowMoreButton = document.getElementById("showMoreBtn");
+  const hasEnoughArticles = node.articleContainer.childElementCount > 20;
+
   if (
-    infiniteScrollPages[hash] &&
-    scrollIsBottom &&
-    !document.getElementById("showMoreBtn") &&
-    node.articleContainer.childElementCount > 20
+    hasInfiniteScrollPage &&
+    isScrollBottom &&
+    !hasShowMoreButton &&
+    hasEnoughArticles
   ) {
-    infiniteScrollPages[hash]();
+    hasInfiniteScrollPage();
   }
 }
 let currentPage = 3;
