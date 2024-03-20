@@ -2,10 +2,15 @@ import { searchMovies } from "../pages/searchView.js";
 import * as node from "./nodes.js";
 import { totalPagesFromSearch } from "../pages/searchView.js";
 import { loadMoreTrending, totalPagesFromHome } from "../pages/home.js";
+import {
+  loadMoreCategories,
+  totalPagesFromCategory,
+} from "../pages/category.js";
 
 const infiniteScrollPages = {
   "#search": searchInfinite,
   "#home": homeInfinite,
+  "#category": categoryInfinite,
 };
 
 export function handleScroll() {
@@ -25,7 +30,9 @@ export function handleScroll() {
     hasInfiniteScrollPage &&
     isScrollBottom &&
     !hasShowMoreButton &&
-    hasEnoughArticles
+    hash === "#category"
+      ? true
+      : hasEnoughArticles
   ) {
     hasInfiniteScrollPage();
   }
@@ -59,6 +66,15 @@ function searchInfinite() {
 function homeInfinite() {
   loadMoreTrending(currentPage);
   if (currentPage <= totalPagesFromHome) {
+    currentPage++;
+  }
+}
+
+function categoryInfinite() {
+  const [_, category] = location.hash.split("=");
+  const [__, categoryId] = category.split("-");
+  loadMoreCategories(categoryId, currentPage);
+  if (currentPage <= totalPagesFromCategory) {
     currentPage++;
   }
 }

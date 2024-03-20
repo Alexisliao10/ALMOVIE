@@ -74,10 +74,11 @@ export async function searchMoviesAPI(query, page) {
 }
 // discoverMovie
 export const getDiscoverMovies = getApiData("discover/movie", "results");
-export const getMoviesByGenre = async (id) => {
+export const getMoviesByGenre = async (id, page = 1) => {
   const { data } = await api("discover/movie", {
     params: {
       with_genres: id,
+      page: page,
     },
   });
   return data;
@@ -96,7 +97,7 @@ async function getGenreList() {
   return uniqueId;
 }
 
-// (async () => {
-//   const res1 = await getMoviesByGenre(28);
-//   console.log("🚀 ~ res1:", res1);
-// })();
+(async () => {
+  const res1 = await getMoviesByGenre(28, 2);
+  console.log("🚀 ~ res1:", res1);
+})();
