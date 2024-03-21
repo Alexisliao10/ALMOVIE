@@ -1,4 +1,7 @@
-import axios, { isCancel, AxiosError } from "axios";
+import axios, {
+  isCancel,
+  AxiosError,
+} from "../../node_modules/axios/dist/esm/axios.min.js";
 import API_KEY from "../apiKey.js";
 
 const api = axios.create({
@@ -97,7 +100,7 @@ async function getGenreList() {
   return uniqueId;
 }
 
-(async () => {
-  const res1 = await getMoviesByGenre(28, 2);
-  console.log("🚀 ~ res1:", res1);
-})();
+// (async () => {
+//   const res1 = await getMoviesByGenre(28, 2);
+//   console.log("🚀 ~ res1:", res1);
+// })();

@@ -2,6 +2,7 @@ import * as node from "./nodes.js";
 import { genreList } from "./getDataApi.js";
 import { lazyLoader } from "../main.js";
 import { addShowMoreBtn, removeShowMoreBtn } from "../buttons/showMorebtn.js";
+import noImageFound from "@assets/images/noImageAvailable.jpg";
 export function getIdName(id, list) {
   const names = [];
   for (let i = 0; i < id.length; i++) {
@@ -120,7 +121,7 @@ function cardIterator(data, genreNames, lazyLoad) {
       lazyLoad ? "data-img" : "src",
       movie.poster_path
         ? `https://image.tmdb.org/t/p/w185${movie.poster_path}`
-        : "../../public/assets/noImageAvailable.jpg",
+        : noImageFound,
     );
     movieImg.alt = movie.title;
     movieImg.draggable = false;
