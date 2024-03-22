@@ -1,12 +1,12 @@
 {
   "name": "almovie",
   "version": "1.0.0",
-  "description": "A movie app for search new, recents, popular movies",
+  "description": "A movie app for search new, recent, popular movies",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "tail:watch": "npx tailwindcss -i ./src/input.css -o ./public/assets/app.css --watch",
-    "build": "node ./scripts/create-env.cjs && webpack --config webpack.config.js",
+    "build": "node ./scripts/create-env.cjs && npx webpack --config webpack.config.js",
     "dev": "webpack --config webpack.config.dev.js"
   },
   "keywords": [
