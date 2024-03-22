@@ -3,7 +3,7 @@ import { mainLoadingSkeleton } from "./pages/loading.js";
 import { handleScroll } from "./utilities/infiniteScroll.js";
 import "./pages/aside.js";
 import "./utilities/navigation.js";
-import "../public/assets/app.css";
+import "@assets/app.css";
 
 location.hash = "#home";
 mainLoadingSkeleton();

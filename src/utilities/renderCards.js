@@ -1,7 +1,7 @@
 import * as node from "./nodes.js";
 import { genreList } from "./getDataApi.js";
 import { lazyLoader } from "../main.js";
-import { addShowMoreBtn, removeShowMoreBtn } from "../buttons/showMorebtn.js";
+import { addShowMoreBtn, removeShowMoreBtn } from "../buttons/showMoreBtn.js";
 import noImageFound from "@assets/images/noImageAvailable.jpg";
 export function getIdName(id, list) {
   const names = [];
