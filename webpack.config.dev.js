@@ -9,7 +9,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default {
   mode: "development",
-  watch: true,
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -67,4 +66,10 @@ export default {
     }),
     new DotenvWebpackPlugin(),
   ],
+  devServer: {
+    static: path.join(__dirname, "dist"),
+    compress: true,
+    historyApiFallback: true,
+    port: 3006,
+  },
 };

@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "tail:watch": "npx tailwindcss -i ./src/input.css -o ./public/assets/app.css --watch",
-    "build": "node ./scripts/create-env.cjs && npx webpack --config webpack.config.js",
-    "dev": "webpack --config webpack.config.dev.js"
+    "build": "node ./scripts/create-env.cjs && webpack --config webpack.config.js",
+    "dev": "webpack --config webpack.config.dev.js",
+    "start": "webpack server --config webpack.config.dev.js"
   },
   "keywords": [
     "Javascript"
@@ -33,7 +34,8 @@
     "terser-webpack-plugin": "^5.3.10",
     "url-loader": "^4.1.1",
     "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
     "axios": "^1.6.3"
