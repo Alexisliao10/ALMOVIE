@@ -51,7 +51,7 @@ function cardIterator(data, genreNames, lazyLoad) {
     movieInfoContainer.classList.add(
       "absolute",
       "opacity-0",
-      "transition-all",
+      "transition-opacity",
       "duration-300",
     );
     movieOverview.classList.add(
@@ -110,8 +110,6 @@ function cardIterator(data, genreNames, lazyLoad) {
       "h-auto",
       "z-10",
       "rounded-lg",
-      "active:border-2",
-      "active:border-sky-500",
       "select-none",
       "aspect-[13/20]",
       "hover:border-2",

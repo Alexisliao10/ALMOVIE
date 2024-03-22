@@ -102,14 +102,14 @@ export async function renderMoreDetails(id) {
     "lg:w-[500px]",
   );
   nodes.releaseDate.textContent =
-    windowWidth > !1024
-      ? renderDetails.release_date
-      : `Release date: ${renderDetails.release_date}`;
+    windowWidth >= 1024
+      ? `Release date: ${renderDetails.release_date}`
+      : renderDetails.release_date;
   nodes.separator.textContent = "|";
   nodes.duration.textContent =
-    windowWidth > !1024
-      ? duration(runtime).join(" ")
-      : `Duration: ${duration(runtime).join(" ")}`;
+    windowWidth >= 1024
+      ? `Duration: ${duration(runtime).join(" ")}`
+      : duration(runtime).join(" ");
   nodes.ratingContainer.id = "movieRatingStart-infoSec";
   nodes.ratingContainer.classList.add(
     "absolute",
