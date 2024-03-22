@@ -1,3 +1,3 @@
-const fs = require("fs");
+import fs from "fs";
 
 fs.writeFileSync("./.env", `API_KEY=${process.env.API_KEY}\n`);
