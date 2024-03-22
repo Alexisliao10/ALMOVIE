@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "tail:watch": "npx tailwindcss -i ./src/input.css -o ./public/assets/app.css --watch",
-    "build": "node ./scripts/create-env.cjs && npx tailwindcss -i ./src/input.css -o ./public/assets/app.css && webpack --config webpack.config.js",
+    "build": "node ./scripts/create-env.cjs && webpack --config webpack.config.js",
     "dev": "webpack --config webpack.config.dev.js"
   },
   "keywords": [
