@@ -102,12 +102,12 @@ export async function renderMoreDetails(id) {
     "lg:w-[500px]",
   );
   nodes.releaseDate.textContent =
-    !windowWidth > 1024
+    windowWidth > !1024
       ? renderDetails.release_date
       : `Release date: ${renderDetails.release_date}`;
   nodes.separator.textContent = "|";
   nodes.duration.textContent =
-    !windowWidth > 1024
+    windowWidth > !1024
       ? duration(runtime).join(" ")
       : `Duration: ${duration(runtime).join(" ")}`;
   nodes.ratingContainer.id = "movieRatingStart-infoSec";

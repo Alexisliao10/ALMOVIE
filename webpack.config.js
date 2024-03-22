@@ -11,7 +11,6 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default {
-  mode: "production",
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
