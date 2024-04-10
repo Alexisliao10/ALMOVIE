@@ -2,6 +2,8 @@
 
 Deploy: https://spectacular-paprenjak-dd59d8.netlify.app
 
+Figma: https://www.figma.com/file/b9mAfDPlpCcILXgxItVT1L/ALMOVIE?type=design&node-id=0%3A1&mode=design&t=lLL2vgeawNgB0q8E-1
+
 ¡Hola! Bienvenido a mi emocionante primer proyecto, ALMOVIE, donde he explorado el fascinante mundo de las API REST y tailwindcss.
 
 Este repositorio contiene mi proyecto ALMOVIE, una aplicación web que utiliza la [API REST de THEMOVIEDB](https://www.themoviedb.org/) para obtener información sobre películas. Durante el desarrollo de este proyecto, he aprendido y aplicado diversos conceptos y tecnologías clave. A continuación, se describen algunas de las características principales implementadas:
